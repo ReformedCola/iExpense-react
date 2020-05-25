@@ -22,7 +22,7 @@ const NoteSection: React.FC = () => {
     if (refInput.current !== null) {
       setNote(refInput.current.value);
     }
-  }
+  };
   return (
     <Wrapper>
       <label>

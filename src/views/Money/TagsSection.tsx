@@ -41,7 +41,7 @@ const TagsSection: React.FC = (props) => {
       setSelectedTags([...selectedTags, tag]);
     }
   };
-  const getClass = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : ''
+  const getClass = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
   return (
     <Wrapper>
       <ol>
