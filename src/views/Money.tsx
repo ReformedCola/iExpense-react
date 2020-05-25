@@ -3,7 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const TagsSection = styled.section`
-  background: #ffffff; padding: 12px 16px;
+  background: #ffffff; padding: 12px 16px; 
+  flex-grow: 1; display: flex; flex-direction: column;
+  justify-content: flex-end; align-items: flex-start;
   > ol { margin: 0 -12px;
     > li {
       background: #d9d9d9; border-radius: 18px;
@@ -48,34 +50,20 @@ const CategorySection = styled.section`
 `;
 
 const NumberPadSection = styled.section`
-  display: flex; 
-  flex-direction: column;
+  display: flex; flex-direction: column;
   > .output {
-    background: white;
-    font-size: 36px;
-    line-height: 72px;
-    text-align: right;
-    padding: 0 16px;
+    background: white; font-size: 36px; line-height: 72px;
+    text-align: right; padding: 0 16px;
     box-shadow: inset 0 -5px 5px -5px rgba(0, 0, 0, 0.25),
                 inset 0 5px 5px -5px rgba(0, 0, 0, 0.25);
   }
   > .pad {
     > button {
-      font-size: 18px;
-      float: left;
-      width: 25%;
-      height: 64px;
-      border: none;
-      &.ok {
-        height: 128px;
-        float: right;
-      }
-      &.zero {
-        width: 50%;
-      }
-      &:nth-child(1) {
-        background: #f2f2f2;
-      }
+      font-size: 18px; float: left; width: 25%;
+      height: 64px; border: none;
+      &.ok { height: 128px; float: right; }
+      &.zero { width: 50%; }
+      &:nth-child(1) { background: #f2f2f2; }
       &:nth-child(2),
       &:nth-child(5) {
         background: #e0e0e0;
@@ -105,9 +93,14 @@ const NumberPadSection = styled.section`
   }
 `;
 
+const MyLayout = styled(Layout)`
+  display: flex;
+  flex-direction: column;
+`;
+
 function Money() {
   return (
-    <Layout>
+    <MyLayout>
       <TagsSection>
         <ol>
           <li>Cloth</li>
@@ -150,7 +143,7 @@ function Money() {
           <button>.</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </MyLayout>
   );
 }
 
