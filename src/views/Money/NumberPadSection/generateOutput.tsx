@@ -33,4 +33,4 @@ const generateOutput = (text: string, output = '0') => {
   }
 };
 
-export {generateOutput}
+export {generateOutput};
