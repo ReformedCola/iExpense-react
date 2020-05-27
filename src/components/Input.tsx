@@ -7,7 +7,7 @@ const Label = styled.label`
       margin-right: 16px; white-space: nowrap;
     }
     > input {
-      display: block; width: 100%; height: 72px;
+      display: block; width: 100%; height: 44px;
       background: none; border: none;
     }
 `;
