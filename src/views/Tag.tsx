@@ -27,9 +27,9 @@ const InputWrapper = styled.div`
 `;
 
 const Tag: React.FC = () => {
-  const {findTag} = useTags();
-  let {id} = useParams<Params>();
-  const tag = findTag(parseInt(id));
+  const {findTag, updateTag} = useTags();
+  let {id:idString} = useParams<Params>();
+  const tag = findTag(parseInt(idString));
   return (
     <Layout>
       <Topbar>
@@ -40,6 +40,9 @@ const Tag: React.FC = () => {
       <InputWrapper>
         <Input label="Tag Name:" type="text" placeholder="Tag Name"
                value={tag.name}
+               onChange={(e) => {
+                 updateTag(tag.id, {name: e.target.value});
+               }}
         />
       </InputWrapper>
       <Center>
