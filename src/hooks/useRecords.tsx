@@ -27,7 +27,7 @@ export const useRecords = () => {
       return false;
     }
     if (newRecord.tagIds.length === 0) {
-      alert('Please select a tag');
+      alert('Please select at least a tag');
       return false;
     }
     const record = {...newRecord, createdAt: (new Date()).toISOString()};
