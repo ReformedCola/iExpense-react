@@ -22,8 +22,8 @@ const defaultFormData = {
 };
 
 const CategoryWrapper = styled.div`
-  background: #00a0e9; 
-  color: white;
+  //#00a0e9
+  background: #c4c4c4; 
 `;
 
 function Money() {
