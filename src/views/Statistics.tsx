@@ -36,7 +36,7 @@ function Statistics() {
   const {getName} = useTags();
   const selectedRecords = records.filter(r => r.category === category);
   const hash: { [K: string]: RecordItem[] } = {};
-  selectedRecords.map(r => {
+  selectedRecords.forEach(r => {
     const key = day(r.createdAt).format('MMM DD, YYYY');
     if (!(key in hash)) {
       hash[key] = [];
