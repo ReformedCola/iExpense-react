@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import theme from 'theme';
 
 type Props = SVGAttributes<SVGElement> & {
-  name: string
-  color?: string
-  size?: number
+  name: string;
+  color?: string;
+  size?: number;
 }
 
 type TStyledIcon = {
-  size: number
+  size: number;
 }
 
 const StyledIcon = styled.svg<TStyledIcon>(props => ({
