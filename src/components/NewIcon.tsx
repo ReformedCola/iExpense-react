@@ -16,7 +16,7 @@ type TStyledIcon = {
 const StyledIcon = styled.svg<TStyledIcon>(props => ({
   width: props.size,
   height: props.size,
-  fill: props.color
+  fill: props.color,
 }));
 
 const Icon: React.FC<Props> = (props) => {
