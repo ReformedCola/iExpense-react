@@ -23,6 +23,11 @@ const defaultFormData = {
 
 const CategoryWrapper = styled.div`
   //#00a0e9
+  //#c4c4c4
+  //#87cefa
+  //#1777ff
+  //#D4ECF9
+  //#93B8CA
   background: #c4c4c4; 
 `;
 
