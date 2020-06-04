@@ -1,6 +1,19 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
 
+// --------------- New ---------------
+export type RecordType = 'expense' | 'income'
+
+export type RawRecord = {
+  id: string
+  date: string
+  categoryId: string
+  amount: number
+  note: string
+  type: RecordType
+}
+// --------------- New ---------------
+
 export type RecordItem = {
   tagIds: number[],
   note: string,

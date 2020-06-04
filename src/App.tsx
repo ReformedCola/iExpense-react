@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import styled, {ThemeProvider} from 'styled-components';
-import Money from 'views/Money';
+// import Money from 'views/Money';
+import Money from 'components/NewMoney';
 import Statistics from 'views/Statistics';
 import Tags from 'views/Tags';
 import NoMatch from 'views/NoMatch';
 import {Tag} from 'views/Tag';
 import theme from 'theme';
 
-type AppWrapper = {
+type TAppWrapper = {
   height: number
 }
 
-const AppWrapper = styled.div<AppWrapper>`
+const AppWrapper = styled.div<TAppWrapper>`
   position: relative;
   max-width: 480px;
   margin: 0 auto;
