@@ -1,8 +1,11 @@
 @import-normalize ;
 @import "helper";
+@import "variables";
 * {
   margin: 0;
   padding: 0;
+  font-family: $font-hei;
+  font-size: $normal-text-size;
 }
 
 * {
@@ -23,14 +26,18 @@ ul, ol {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: $link-text;
 }
 
 body {
-  font-family: $font-hei;
-  font-size: 16px;
   line-height: 1.2;
-  background: #f5f5f5;
+  background: #323232;
+}
+
+a, button {
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 button, input {
@@ -45,6 +52,9 @@ button, input {
   width: 1em;
   height: 1em;
   display: inline-block;
+  vertical-align: -0.15em;
+  overflow: hidden;
+  fill: currentColor;
 }
 
 .clearfix::after {
