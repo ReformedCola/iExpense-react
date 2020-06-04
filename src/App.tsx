@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import Money from 'views/Money';
 import Statistics from 'views/Statistics';
@@ -7,16 +7,34 @@ import NoMatch from 'views/NoMatch';
 import styled from 'styled-components';
 import {Tag} from './views/Tag';
 
-const AppWrapper = styled.div`
-  color: #333;
-  max-width: 520px;
+type AppWrapper = {
+  height: number
+}
+
+const AppWrapper = styled.div<AppWrapper>`
+  position: relative;
+  max-width: 480px;
   margin: 0 auto;
+  background: #EDEDED;
+  height: ${props => props.height + 'px'};
+  color: #333;
 `;
 
-function App() {
+const App: React.FC = () => {
+  const [height, setHeight] = useState(window.innerHeight);
+
+  const onResize = () => {
+    setHeight(window.innerHeight * 0.01);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', onResize);
+    return window.removeEventListener('resize', onResize);
+  });
+
   return (
-    <AppWrapper>
-      <Router>
+    <Router>
+      <AppWrapper height={height}>
         <Switch>
           <Route exact path="/tags">
             <Tags/>
@@ -35,9 +53,9 @@ function App() {
             <NoMatch/>
           </Route>
         </Switch>
-      </Router>
-    </AppWrapper>
+      </AppWrapper>
+    </Router>
   );
-}
+};
 
 export default App;
