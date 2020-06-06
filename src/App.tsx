@@ -9,6 +9,7 @@ import NoMatch from 'views/NoMatch';
 // import {Tag} from 'views/Tag';
 import theme from 'theme';
 import Summary from 'views/Summary';
+import Settings from 'views/Settings';
 
 type TAppWrapper = {
   height: number
@@ -47,6 +48,9 @@ const App: React.FC = () => {
             {/*</Route>*/}
             <Route exact path="/summary">
               <Summary/>
+            </Route>
+            <Route exact path="/settings">
+              <Settings/>
             </Route>
             {/*<Route exact path="/statistics">*/}
             {/*  <Statistics/>*/}

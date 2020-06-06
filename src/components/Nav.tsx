@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {Link, useLocation} from 'react-router-dom';
 import * as React from 'react';
 import Icon from './NewIcon';
-import theme from '../theme';
+import theme from 'theme';
 
 type TNavItem = {
   selected: boolean
