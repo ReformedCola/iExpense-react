@@ -1,5 +1,5 @@
 import Nav from './Nav';
-import React, {useEffect, useRef} from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -8,41 +8,26 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const Main = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
+const Header = styled.header`
+  padding: 52px 14px 16px;
+  background: ${props => props.theme.$success};
+  color: ${props => props.theme.$white};
+  .title {
+    text-align: center;
+    font-size: ${props => props.theme.$largeTextSize};
   }
 `;
 
-type Props = {
-  className?: string;
-  scrollTop?: number;
-}
-
-const Layout: React.FC<Props> = (props) => {
-  const mainRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    setTimeout(() => {
-      if (!mainRef.current) {
-        return;
-      }
-      mainRef.current.scrollTop = props.scrollTop!;
-    }, 0);
-  }, [props.scrollTop]);
+const Layout: React.FC = (props) => {
   return (
     <Wrapper>
-      <Main ref={mainRef} className={props.className}>
-        {props.children}
-      </Main>
+      <Header>
+        <p className="title">iExpense</p>
+      </Header>
+      {props.children}
       <Nav/>
     </Wrapper>
   );
-};
-
-Layout.defaultProps = {
-  scrollTop: 0
 };
 
 export default Layout;

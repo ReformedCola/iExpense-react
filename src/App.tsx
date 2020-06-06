@@ -3,10 +3,10 @@ import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import styled, {ThemeProvider} from 'styled-components';
 // import Money from 'views/Money';
 // import Money from 'components/NewMoney';
-import Statistics from 'views/Statistics';
-import Tags from 'views/Tags';
+// import Statistics from 'views/Statistics';
+// import Tags from 'views/Tags';
 import NoMatch from 'views/NoMatch';
-import {Tag} from 'views/Tag';
+// import {Tag} from 'views/Tag';
 import theme from 'theme';
 import Summary from 'views/Summary';
 
@@ -20,7 +20,6 @@ const AppWrapper = styled.div<TAppWrapper>`
   margin: 0 auto;
   background: #EDEDED;
   height: ${props => props.height + 'px'};
-  color: #333;
 `;
 
 const App: React.FC = () => {
@@ -40,18 +39,18 @@ const App: React.FC = () => {
       <Router>
         <AppWrapper height={height}>
           <Switch>
-            <Route exact path="/tags">
-              <Tags/>
-            </Route>
-            <Route exact path="/tags/:id">
-              <Tag/>
-            </Route>
+            {/*<Route exact path="/tags">*/}
+            {/*  <Tags/>*/}
+            {/*</Route>*/}
+            {/*<Route exact path="/tags/:id">*/}
+            {/*  <Tag/>*/}
+            {/*</Route>*/}
             <Route exact path="/summary">
               <Summary/>
             </Route>
-            <Route exact path="/statistics">
-              <Statistics/>
-            </Route>
+            {/*<Route exact path="/statistics">*/}
+            {/*  <Statistics/>*/}
+            {/*</Route>*/}
             <Redirect exact from="/" to="/summary"/>
             <Route path="*">
               <NoMatch/>
