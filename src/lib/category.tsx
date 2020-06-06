@@ -21,57 +21,57 @@ export const OTHER_TYPE = '0';
 export const ALL_CATEGORIES = [
   {
     id: '0',
-    name: '其他',
+    name: 'Other',
     iconName: 'rmb'
   },
   {
     id: '1',
-    name: '衣服',
+    name: 'Clothes',
     iconName: 'clothes'
   },
   {
     id: '2',
-    name: '购物',
+    name: 'Shop',
     iconName: 'bag'
   },
   {
     id: '3',
-    name: '交通',
+    name: 'Transport',
     iconName: 'bus'
   },
   {
     id: '4',
-    name: '餐饮',
+    name: 'Dining',
     iconName: 'rice'
   },
   {
     id: '5',
-    name: '旅行',
+    name: 'Travel',
     iconName: 'luggage'
   },
   {
     id: '6',
-    name: '股票',
+    name: 'Stock',
     iconName: 'stock'
   },
   {
     id: '7',
-    name: '水电媒',
+    name: 'Water Fee',
     iconName: 'water-drop'
   },
   {
     id: '8',
-    name: '信用卡',
+    name: 'Credit Card',
     iconName: 'card'
   },
   {
     id: '9',
-    name: '工资',
+    name: 'Salary',
     iconName: 'salary'
   },
   {
     id: '10',
-    name: '转账',
+    name: 'Transfer',
     iconName: 'transfer'
   }
 ];
