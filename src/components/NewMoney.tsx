@@ -94,7 +94,7 @@ const Money: React.FC<Props> = (props) => {
   const {closeDrawer, onSubmit, value} = props;
 
   const rawRecord: RawRecord = value ? value : {
-    data: new Date().toISOString(),
+    date: new Date().toISOString(),
     id: new Date().getTime().toString(),
     amount: 0,
     categoryId: '1',
@@ -103,7 +103,7 @@ const Money: React.FC<Props> = (props) => {
   };
 
   const [type, setType] = useState<RecordType>(rawRecord.type);
-  const [amount, setAmount] = useState(rawRecord.categoryId);
+  const [amount, setAmount] = useState(rawRecord.amount);
   const [amountString, setAmountString] = useState(rawRecord.amount.toString());
   const [categoryId, setCategoryId] = useState(rawRecord.categoryId);
   const [note, setNote] = useState(rawRecord.note);
@@ -121,7 +121,7 @@ const Money: React.FC<Props> = (props) => {
     const newNote = prompt('Add Notes', '') || '';
 
     if (newNote.length > MAX_NOTE_LENGTH) return alert(`Cannot exceed${MAX_NOTE_LENGTH}characters`);
-    setNode(newNote);
+    setNote(newNote);
   };
 
   const onOK = () => {

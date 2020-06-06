@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {RecordType} from '../hooks/useRecords';
+import {RecordType} from 'hooks/useRecords';
 
 type Props = {
   value: string

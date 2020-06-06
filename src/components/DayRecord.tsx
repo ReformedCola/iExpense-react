@@ -52,11 +52,11 @@ const DayRecord: React.FC<Props> = (props) => {
           <span>Tue</span>
         </DateSection>
         <AmountSection>
-          <Tag>E</Tag>
+          <Tag>+</Tag>
           <span style={{marginRight: 16}}>
             {expenseTotal.toFixed(2)}
           </span>
-          <Tag>I</Tag>
+          <Tag>-</Tag>
           <span>
             {incomeTotal.toFixed(2)}
           </span>

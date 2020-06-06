@@ -19,14 +19,14 @@ export type Record = {
   expenseTotal: number
 }
 
-export type DayRecord = Record & {
+export type TDayRecord = Record & {
   day: string
   recordList: RawRecord[]
 }
 
-export type MonthRecord = Record & {
+export type TMonthRecord = Record & {
   month: string
-  recordList: DayRecord[]
+  recordList: TDayRecord[]
 }
 
 export const DEFAULT_RECORDS: RawRecord[] = [
@@ -65,19 +65,19 @@ export const DEFAULT_RECORDS: RawRecord[] = [
 ];
 
 // append single record
-export const appendRecord = (prevRecordList: MonthRecord[], rawRecord: RawRecord) => {
+export const appendRecord = (prevRecordList: TMonthRecord[], rawRecord: RawRecord) => {
   const month = dayjs(rawRecord.date).format(MONTH);
   const day = dayjs(rawRecord.date).format(DAY);
 
   // find month
-  let monthRecord = prevRecordList.find((m: MonthRecord) => m.month === month);
+  let monthRecord = prevRecordList.find((m: TMonthRecord) => m.month === month);
   if (!monthRecord) {
     monthRecord = {month, incomeTotal: 0, expenseTotal: 0, recordList: []};
     prevRecordList.push(monthRecord);
   }
 
   // find day
-  let dayRecord = monthRecord.recordList.find((d: DayRecord) => d.day === day);
+  let dayRecord = monthRecord.recordList.find((d: TDayRecord) => d.day === day);
   if (!dayRecord) {
     dayRecord = {day, incomeTotal: 0, expenseTotal: 0, recordList: []};
     monthRecord.recordList.push(dayRecord);
@@ -90,7 +90,7 @@ export const appendRecord = (prevRecordList: MonthRecord[], rawRecord: RawRecord
   updateTotal(monthRecord, dayRecord, rawRecord);
 };
 
-const updateTotal = (monthRecord: MonthRecord, dayRecord: DayRecord, rawRecord: RawRecord) => {
+const updateTotal = (monthRecord: TMonthRecord, dayRecord: TDayRecord, rawRecord: RawRecord) => {
   const {amount, type} = rawRecord;
 
   if (type === 'expense') {
@@ -103,8 +103,8 @@ const updateTotal = (monthRecord: MonthRecord, dayRecord: DayRecord, rawRecord: 
 };
 
 // append multiple records
-export const bulkAppendRecords = (prevRecordList: MonthRecord[], rawRecordList: RawRecord[]) => {
-  let recordList: MonthRecord[] = JSON.parse(JSON.stringify(prevRecordList));
+export const bulkAppendRecords = (prevRecordList: TMonthRecord[], rawRecordList: RawRecord[]) => {
+  let recordList: TMonthRecord[] = JSON.parse(JSON.stringify(prevRecordList));
 
   rawRecordList.forEach((rawRecord: RawRecord) => {
     appendRecord(recordList, rawRecord);
@@ -113,7 +113,7 @@ export const bulkAppendRecords = (prevRecordList: MonthRecord[], rawRecordList: 
   return recordList;
 };
 
-export const parseMonthRecord = (monthRecord: MonthRecord) => {
+export const parseMonthRecord = (monthRecord: TMonthRecord) => {
   let rawRecordList: RawRecord[] = [];
   monthRecord.recordList.forEach(m =>
     m.recordList.forEach((d =>
@@ -127,7 +127,7 @@ const useRecords = () => {
   const ITEM_NAME = 'rawRecordList';
 
   const [rawRecordList, setRawRecordList] = useState<RawRecord[]>([]);
-  const [recordList, setRecordList] = useState<MonthRecord[]>([]);
+  const [recordList, setRecordList] = useState<TMonthRecord[]>([]);
 
   useEffect(() => fetchData(), []);
 

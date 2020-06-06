@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 import styled, {ThemeProvider} from 'styled-components';
 // import Money from 'views/Money';
-import Money from 'components/NewMoney';
+// import Money from 'components/NewMoney';
 import Statistics from 'views/Statistics';
 import Tags from 'views/Tags';
 import NoMatch from 'views/NoMatch';
 import {Tag} from 'views/Tag';
 import theme from 'theme';
+import Summary from 'views/Summary';
 
 type TAppWrapper = {
   height: number
@@ -45,13 +46,13 @@ const App: React.FC = () => {
             <Route exact path="/tags/:id">
               <Tag/>
             </Route>
-            <Route exact path="/money">
-              <Money/>
+            <Route exact path="/summary">
+              <Summary/>
             </Route>
             <Route exact path="/statistics">
               <Statistics/>
             </Route>
-            <Redirect exact from="/" to="/money"/>
+            <Redirect exact from="/" to="/summary"/>
             <Route path="*">
               <NoMatch/>
             </Route>

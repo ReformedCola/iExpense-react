@@ -33,10 +33,10 @@ const MonthRecord: React.FC<Props> = (props) => {
           <span>{month}</span>
           <Divider gap={8}/>
           <span style={{marginRight: 12}}>
-            Total Expense${expenseTotal.toFixed(2)}
+            Total Expense $ {expenseTotal.toFixed(2)}
           </span>
           <span>
-            Total Income${incomeTotal.toFixed(2)}
+            Total Income $ {incomeTotal.toFixed(2)}
           </span>
         </Header>
       }
