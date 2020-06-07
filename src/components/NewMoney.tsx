@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {RawRecord, RecordType} from 'hooks/useRecords';
-import {Button} from './NewButton';
+import Button from './NewButton';
 import NumberPad from './NumberPad';
 import {DEFAULT_EXPENSE_CATEGORIES, DEFAULT_INCOME_CATEGORIES} from 'lib/category';
 import Category from './Category';

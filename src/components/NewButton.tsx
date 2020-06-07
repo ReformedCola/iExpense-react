@@ -70,4 +70,4 @@ Button.defaultProps = {
   size: 'normal'
 };
 
-export {Button};
+export default Button;

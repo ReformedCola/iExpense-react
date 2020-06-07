@@ -4,7 +4,7 @@ import {useState} from 'react';
 import Category, {TCategory} from 'components/Category';
 import {ALL_CATEGORIES} from 'lib/category';
 import styled from 'styled-components';
-import {Button} from 'components/NewButton';
+import Button from 'components/NewButton';
 import ProgressBar from 'components/ProgressBar';
 import theme from 'theme';
 
