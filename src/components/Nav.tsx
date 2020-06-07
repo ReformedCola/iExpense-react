@@ -47,9 +47,9 @@ const Nav: React.FC = () => {
         }
         <div>Summary</div>
       </NavItem>
-      <NavItem to="/chart" selected={pathname === '/analysis'}>
+      <NavItem to="/analysis" selected={pathname === '/analysis'}>
         {
-          pathname === '/chart' ?
+          pathname === '/analysis' ?
             <Icon name="solid-chart" size={24} color={theme.$success}/> :
             <Icon name="chart" size={24}/>
         }
