@@ -61,7 +61,7 @@ const Nav: React.FC = () => {
             <Icon name="solid-settings" size={24} color={theme.$success}/> :
             <Icon name="settings" size={24}/>
         }
-        <div>Setting</div>
+        <div>Settings</div>
       </NavItem>
     </NavWrapper>
   );

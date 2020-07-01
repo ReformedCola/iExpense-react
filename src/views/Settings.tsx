@@ -30,7 +30,7 @@ const QrCode = styled.div`
   padding: 32px;
   text-align: center;
   > p {
-    font-size: ${props => props.theme.$largeTextSize};
+    font-size: ${props => props.theme.$largeTextSize}; 
   }
   > img {
     margin-top: 24px;
