@@ -57,12 +57,12 @@ const Settings: React.FC = () => {
       <Main>
         <Item style={{marginBottom: 8}} onClick={() => toggleQrcode(true)}>
           <Icon size={22} name="qrcode" color="#ff9800"/>
-          <span>Share to friends</span>
+          <span>Share it to your friends</span>
         </Item>
 
         <Item onClick={() => window.open(github, '_blank')}>
           <Icon size={22} name="github" color="black"/>
-          <span style={{borderBottom: '1px solid #eee'}}>Support with your Star</span>
+          <span style={{borderBottom: '1px solid #eee'}}>Support me with your Star</span>
         </Item>
 
         <Item onClick={() => toggleContact(true)}>
@@ -75,8 +75,8 @@ const Settings: React.FC = () => {
         showQrCode &&
         <Drawer closeDrawer={() => toggleQrcode(false)}>
           <QrCode>
-            <p>Scan QRCode below to share to your friends</p>
-            {/*<img src={require('../assets/img/qrcode.png')} alt="网站二维码"/>*/}
+            <p>Scan QR Code below to share</p>
+            {<img src={require('../assets/img/qrcode.png')} alt="QR Code"/>}
           </QrCode>
         </Drawer>
       }
@@ -85,7 +85,7 @@ const Settings: React.FC = () => {
         showContact &&
         <Drawer closeDrawer={() => toggleContact(false)}>
           <Contact>
-            <span style={{marginRight: 8}}>My Email：</span>
+            <span style={{marginRight: 8}}>My Email:</span>
             <a href="mailto:haixiang6123@gmail.com" target="_blank" rel="noopener noreferrer">
               zhiyuanfw@gmail.com
             </a>
