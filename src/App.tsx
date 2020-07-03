@@ -47,7 +47,7 @@ const App: React.FC = () => {
             {/*<Route exact path="/tags/:id">*/}
             {/*  <Tag/>*/}
             {/*</Route>*/}
-            <Route exact path="/summary">
+            <Route exact path="/">
               <Summary/>
             </Route>
             <Route exact path="/analysis">
@@ -59,7 +59,7 @@ const App: React.FC = () => {
             {/*<Route exact path="/statistics">*/}
             {/*  <Statistics/>*/}
             {/*</Route>*/}
-            <Redirect exact from="/" to="/summary"/>
+            {/*<Redirect exact from="/" to="/summary"/>*/}
             <Route path="*">
               <NoMatch/>
             </Route>

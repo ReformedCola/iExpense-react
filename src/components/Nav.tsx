@@ -39,9 +39,9 @@ const Nav: React.FC = () => {
   const {pathname} = useLocation();
   return (
     <NavWrapper className="clearfix">
-      <NavItem to="/summary" selected={pathname === '/summary'}>
+      <NavItem to="/" selected={pathname === '/'}>
         {
-          pathname === '/summary' ?
+          pathname === '/' ?
             <Icon name="solid-order" size={24} color={theme.$success}/> :
             <Icon name="order" size={24}/>
         }
