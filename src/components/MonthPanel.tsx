@@ -46,7 +46,7 @@ const MonthItem = styled.li<TMonthItem>`
 `;
 
 export const getPrevMonths = () => {
-  const DURATION = 5;
+  const DURATION = 9;
 
   return [...Array(DURATION)].map((_, index) => dayjs().subtract(index, 'month'));
 };
@@ -78,7 +78,7 @@ const MonthPanel: React.FC<Props> = (props) => {
               <MonthItem selected={m.isSame(value, 'date')}
                          key={m.get('month')}
                          onClick={() => submit(m)}>
-                {m.get('month') + 1}
+                {m.format('MMM')}
               </MonthItem>
             )}
           </MonthList>
@@ -95,7 +95,7 @@ const MonthPanel: React.FC<Props> = (props) => {
               <MonthItem selected={m.isSame(value, 'date')}
                          key={m.get('month')}
                          onClick={() => submit(m)}>
-                {m.get('month') + 1}
+                {m.format('MMM')}
               </MonthItem>
             )}
           </MonthList>
