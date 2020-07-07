@@ -94,7 +94,7 @@ const Summary: React.FC = () => {
         <section>
           <TypeButton onClick={() => toggleFilter(true)}>
             <span>{filter ? filter.name : 'All Types'}</span>
-            <Divider color="68C895"/>
+            <Divider color="#68C895"/>
             <Icon color="#edf5ed" name="application"/>
           </TypeButton>
         </section>

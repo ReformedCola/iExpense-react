@@ -69,7 +69,7 @@ const CategoryFilter: React.FC<Props> = (props) => {
       <CategoryItem selected={value === ALL_TYPE}
                     recordType="expense"
                     onClick={() => submit(ALL_TYPE, 'expense')}>
-        All Type
+        All Types
       </CategoryItem>
 
       <Tag>Expense</Tag>
