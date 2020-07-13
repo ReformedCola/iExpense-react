@@ -11,6 +11,7 @@ import theme from 'theme';
 import Summary from 'views/Summary';
 import Settings from 'views/Settings';
 import Analysis from 'views/Analysis';
+import EditRecord from './views/EditRecord';
 
 type TAppWrapper = {
   height: number
@@ -55,6 +56,9 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/settings">
               <Settings/>
+            </Route>
+            <Route exact path="/record/:id">
+              <EditRecord/>
             </Route>
             {/*<Route exact path="/statistics">*/}
             {/*  <Statistics/>*/}
