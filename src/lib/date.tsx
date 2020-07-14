@@ -3,7 +3,7 @@ import {Dayjs} from 'dayjs';
 export const MONTH = 'MMM YYYY';
 export const DAY = 'MMM DD';
 export const TIME = 'hh:mm';
-export const FULL_TIME = 'MMM DD YYYY hh:mm';
+export const FULL_TIME = 'MMM DD, YYYY hh:mm';
 
 export const getDaysInMonth = (now: Dayjs) => {
   const year = now.get('year');
