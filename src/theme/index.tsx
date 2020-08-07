@@ -1,8 +1,8 @@
 const theme = {
   $white: '#edf5ed',
-  $success: '#40B475',
+  $success: '#0e9dec',
   $danger: '#F76361',
-  $warning: '#F0B739',
+  $warning: '#FF5A5F',
   $linkText: '#576F96',
   $mainText: '#303133',
   $normalText: '#606266',
