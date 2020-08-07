@@ -36,7 +36,7 @@ export const ALL_CATEGORIES = [
   },
   {
     id: '3',
-    name: 'Transport',
+    name: 'Bus',
     iconName: 'bus'
   },
   {
@@ -56,12 +56,12 @@ export const ALL_CATEGORIES = [
   },
   {
     id: '7',
-    name: 'Water Fee',
+    name: 'Water',
     iconName: 'water-drop'
   },
   {
     id: '8',
-    name: 'Credit Card',
+    name: 'Card',
     iconName: 'card'
   },
   {

@@ -46,7 +46,7 @@ const AmountSection = styled.section`
 `;
 
 const CategoryList = styled.ul`
-  padding: 24px;
+  padding: 20px;
   display: flex;
   align-items: center;
   overflow-x: auto;
@@ -90,7 +90,6 @@ const NumberPadSection = styled.section`
 `;
 
 const Money: React.FC<Props> = (props) => {
-  // --------------- New ---------------
   const {closeDrawer, onSubmit, value} = props;
 
   const rawRecord: RawRecord = value ? value : {

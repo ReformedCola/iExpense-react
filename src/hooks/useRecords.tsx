@@ -61,7 +61,7 @@ export const DEFAULT_RECORDS: RawRecord[] = [
     amount: 500,
     note: 'Korea',
     type: 'expense'
-  }
+  },
 ];
 
 // append single record

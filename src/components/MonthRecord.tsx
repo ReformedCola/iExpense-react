@@ -23,12 +23,12 @@ const RecordList = styled.li``;
 const MonthRecord: React.FC<Props> = (props) => {
   const {month, recordList, incomeTotal, expenseTotal} = props.monthRecord;
 
-  const curtMonth = dayjs().format(MONTH);
+  const currentMonth = dayjs().format(MONTH);
 
   return (
     <RecordList>
       {
-        curtMonth !== month &&  // show records that are excluded from current month
+        currentMonth !== month &&  // show records that are excluded from current month
         <Header>
           <span>{month}</span>
           <Divider gap={8}/>
