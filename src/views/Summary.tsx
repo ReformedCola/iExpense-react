@@ -5,7 +5,7 @@ import {ALL_CATEGORIES, ALL_TYPE} from 'lib/category';
 import useRecords, {RawRecord, RecordType} from 'hooks/useRecords';
 import Layout from 'components/Layout';
 import styled from 'styled-components';
-import Icon from 'components/NewIcon';
+import Icon from 'components/Icon';
 import Divider from 'components/Divider';
 import {MONTH} from 'lib/date';
 import MonthRecord from 'components/MonthRecord';
@@ -26,7 +26,7 @@ const TypeButton = styled.button`
   margin-top: 26px;
   padding: 8px 16px;
   color: ${props => props.theme.$white};
-  background: #53BC82;
+  background: #3EB1EF;
   border: none;
   outline: none;
   border-radius: 4px;
@@ -102,7 +102,7 @@ const Summary: React.FC = () => {
         <MonthFilterSection>
           <MonthButton onClick={() => toggleMonth(true)}>
             <span style={{marginRight: 4}}>{month.format(MONTH)}</span>
-            <Icon color="#A0D8BB" name="drop-down"/>
+            <Icon color="#9ED8F7" name="dropDown"/>
           </MonthButton>
           <span style={{marginRight: 12}}>
             Total Expense $ {firstMonth ? firstMonth.expenseTotal.toFixed(2) : '0.00'}
@@ -128,7 +128,7 @@ const Summary: React.FC = () => {
 
       {/*Bookkeeping*/}
       <Sticker onClick={() => toggleMoney(true)}>
-        <Icon name="survey" size={22} color={theme.$success}/>
+        <Icon name="bookkeeping" size={22} color={theme.$success}/>
       </Sticker>
 
       {/*Select Month*/}

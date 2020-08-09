@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {Link, useLocation} from 'react-router-dom';
 import * as React from 'react';
-import Icon from './NewIcon';
+import Icon from './Icon';
 import theme from 'theme';
 
 type TNavItem = {
@@ -42,24 +42,24 @@ const Nav: React.FC = () => {
       <NavItem to="/" selected={pathname === '/'}>
         {
           pathname === '/' ?
-            <Icon name="solid-order" size={24} color={theme.$success}/> :
-            <Icon name="order" size={24}/>
+            <Icon name="details" size={24} color={theme.$success}/> :
+            <Icon name="details" size={24}/>
         }
         <div>Summary</div>
       </NavItem>
       <NavItem to="/analysis" selected={pathname === '/analysis'}>
         {
           pathname === '/analysis' ?
-            <Icon name="solid-chart" size={24} color={theme.$success}/> :
-            <Icon name="chart" size={24}/>
+            <Icon name="statistics" size={24} color={theme.$success}/> :
+            <Icon name="statistics" size={24}/>
         }
         <div>Chart</div>
       </NavItem>
       <NavItem to="/settings" selected={pathname === 'settings'}>
         {
           pathname === '/settings' ?
-            <Icon name="solid-settings" size={24} color={theme.$success}/> :
-            <Icon name="settings" size={24}/>
+            <Icon name="setting" size={24} color={theme.$success}/> :
+            <Icon name="setting" size={24}/>
         }
         <div>Settings</div>
       </NavItem>

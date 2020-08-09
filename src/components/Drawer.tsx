@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Icon from './NewIcon';
+import Icon from './Icon';
 
 type Props = {
   closeDrawer: () => void

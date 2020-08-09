@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Icon from './NewIcon';
+import Icon from './Icon';
 import {CATEGORY_COLOR} from 'lib/category';
 import {RecordType} from 'hooks/useRecords';
 
@@ -29,7 +29,8 @@ const StyledCategory = styled.span<TStyledCategory>`
   background: ${props => props.background};
   border-radius: 50%;
   svg {
-    fill: ${props => props.fill}
+    fill: ${props => props.fill};
+    color: white;
   }
 `;
 

@@ -56,9 +56,7 @@ const Tag: React.FC = () => {
   return (
     <Layout>
       <Topbar>
-        <Icon name="left" onClick={onClickBack}/>
-        <span>Edit Tag</span>
-        <Icon/>
+
       </Topbar>
 
       {tag ? tagContent(tag) : <Center>Tag does not exist</Center>}

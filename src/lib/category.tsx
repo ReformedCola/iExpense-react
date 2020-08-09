@@ -22,17 +22,17 @@ export const ALL_CATEGORIES = [
   {
     id: '0',
     name: 'Other',
-    iconName: 'rmb'
+    iconName: 'others'
   },
   {
     id: '1',
     name: 'Clothes',
-    iconName: 'clothes'
+    iconName: 'clothing'
   },
   {
     id: '2',
     name: 'Shop',
-    iconName: 'bag'
+    iconName: 'shopping'
   },
   {
     id: '3',
@@ -42,12 +42,12 @@ export const ALL_CATEGORIES = [
   {
     id: '4',
     name: 'Dining',
-    iconName: 'rice'
+    iconName: 'dining'
   },
   {
     id: '5',
     name: 'Travel',
-    iconName: 'luggage'
+    iconName: 'travel'
   },
   {
     id: '6',
@@ -56,8 +56,8 @@ export const ALL_CATEGORIES = [
   },
   {
     id: '7',
-    name: 'Water',
-    iconName: 'water-drop'
+    name: 'Utility',
+    iconName: 'utility'
   },
   {
     id: '8',
@@ -67,7 +67,7 @@ export const ALL_CATEGORIES = [
   {
     id: '9',
     name: 'Salary',
-    iconName: 'salary'
+    iconName: 'salaryBag'
   },
   {
     id: '10',

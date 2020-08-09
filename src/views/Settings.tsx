@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState} from 'react';
 import Layout from 'components/Layout';
 import styled from 'styled-components';
-import Icon from 'components/NewIcon';
+import Icon from 'components/Icon';
 import Drawer from 'components/Drawer';
 
 const Main = styled.div`
@@ -56,7 +56,7 @@ const Settings: React.FC = () => {
     <Layout>
       <Main>
         <Item style={{marginBottom: 8}} onClick={() => toggleQrcode(true)}>
-          <Icon size={22} name="qrcode" color="#ff9800"/>
+          <Icon size={22} name="qrcodeIcon" color="#ff9800"/>
           <span>Share it to your friends</span>
         </Item>
 
@@ -66,7 +66,7 @@ const Settings: React.FC = () => {
         </Item>
 
         <Item onClick={() => toggleContact(true)}>
-          <Icon size={22} name="message" color="#03a9f4"/>
+          <Icon size={22} name="email" color="#03a9f4"/>
           <span>Contact me</span>
         </Item>
       </Main>

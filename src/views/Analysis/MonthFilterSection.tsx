@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Divider from 'components/Divider';
 import theme from 'theme';
-import Icon from 'components/NewIcon';
+import Icon from 'components/Icon';
 import styled from 'styled-components';
 import {TMonthRecord} from 'hooks/useRecords';
 import {Dayjs} from 'dayjs';
@@ -57,7 +57,7 @@ const MonthFilterSection: React.FC<Props> = (props) => {
       <MonthFilter onClick={showMonth}>
         <span>{month.format(MONTH)}</span>
         <Divider gap={8} color={theme.$placeholder}/>
-        <Icon color={theme.$normalText} name="drop-down"/>
+        <Icon color={theme.$normalText} name="dropDown"/>
       </MonthFilter>
 
       <ExpenseTitle>Total Expense</ExpenseTitle>
