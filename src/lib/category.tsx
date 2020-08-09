@@ -69,11 +69,6 @@ export const ALL_CATEGORIES = [
     name: 'Salary',
     iconName: 'salaryBag'
   },
-  {
-    id: '10',
-    name: 'Transfer',
-    iconName: 'transfer'
-  }
 ];
 
 const [
