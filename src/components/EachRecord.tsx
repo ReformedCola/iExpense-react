@@ -22,6 +22,7 @@ const StyledEachRecord = styled(Link)`
     padding: 0 16px;
     &-details {
       color: ${props => props.theme.$placeholder};
+      padding-top: 4px;
       > span {
         font-size: ${props => props.theme.$smallTextSize}
       }
