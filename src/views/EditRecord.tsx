@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useHistory, useParams} from 'react-router-dom';
-import Icon from '../components/NewIcon';
+import Icon from '../components/Icon';
 import styled from 'styled-components';
 import RecordDetails from '../components/RecordDetails';
 import useRecords, {RawRecord} from '../hooks/useRecords';

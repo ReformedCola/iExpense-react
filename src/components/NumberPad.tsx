@@ -67,7 +67,7 @@ const updateAmount = (prevValue: string, text: string) => {
   const newValue = prevValue + text;
 
   if (parseFloat(newValue) > MAX_AMOUNT) {
-    alert(`Amount cannot exceed${MAX_AMOUNT}`);
+    alert(`Amount cannot exceed ${MAX_AMOUNT}`);
     return prevValue;
   }
 

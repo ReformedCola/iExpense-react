@@ -4,7 +4,7 @@ import Category from './Category';
 import styled from 'styled-components';
 import {FULL_TIME} from '../lib/date';
 import dayjs from 'dayjs';
-import Icon from './NewIcon';
+import Icon from './Icon';
 import Divider from './Divider';
 import {DEFAULT_EXPENSE_CATEGORIES} from '../lib/category';
 
@@ -58,7 +58,7 @@ const ActionSection = styled.section`
 const DeleteButton = styled.button`
   color: ${props => props.theme.$danger};
   svg {
-    fill: ${props => props.theme.$danger}
+    color: ${props => props.theme.$danger}
   }
 `;
 
@@ -98,12 +98,12 @@ const RecordDetails: React.FC<Props> = (props) => {
       </DetailsTable>
       <ActionSection>
         <DeleteButton onClick={deleteRecord}>
-          <Icon name="trash"/>
+          <Icon name="delete"/>
           <span style={{marginLeft: 8}}>Delete</span>
         </DeleteButton>
         <Divider gap={0}/>
         <button onClick={onEdit}>
-          <Icon name="edit"/>
+          <Icon name="note"/>
           <span style={{marginLeft: 8}}>Edit</span>
         </button>
       </ActionSection>
