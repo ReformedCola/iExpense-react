@@ -11,10 +11,10 @@ import {MONTH} from 'lib/date';
 import MonthRecord from 'components/MonthRecord';
 import theme from 'theme';
 import Sticker from 'components/Sticker';
-import Drawer from '../components/Drawer';
-import MonthPanel from '../components/MonthPanel';
-import CategoryFilter from '../components/CategoryFilter';
-import Money from '../components/NewMoney';
+import Drawer from 'components/Drawer';
+import MonthPanel from 'components/MonthPanel';
+import CategoryFilter from 'components/CategoryFilter';
+import Money from 'components/NewMoney';
 
 const FilterWrapper = styled.section`
   padding: 0 12px;
@@ -62,8 +62,11 @@ const Empty = styled.div`
 
 
 const Summary: React.FC = () => {
+  // 月份选择
   const [showMonth, toggleMonth] = useState(false);
+  // 类型选择
   const [showFilter, toggleFilter] = useState(false);
+  // 记账页面打开/关闭
   const [showMoney, toggleMoney] = useState(false);
 
   const [month, setMonth] = useState(dayjs());
@@ -90,11 +93,12 @@ const Summary: React.FC = () => {
 
   return (
     <Layout>
+      {/*类型选择开关*/}
       <FilterWrapper>
         <section>
           <TypeButton onClick={() => toggleFilter(true)}>
-            <span>{filter ? filter.name : 'All Types'}</span>
-            <Divider color="#68C895"/>
+            <span>{filter ? filter.name : 'All'}</span>
+            <Divider color="#6EC4F3"/>
             <Icon color="#edf5ed" name="application"/>
           </TypeButton>
         </section>
