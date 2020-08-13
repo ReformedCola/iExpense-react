@@ -1,7 +1,7 @@
 import {Dayjs} from 'dayjs';
 
-export const MONTH = 'MM/YYYY';
-export const DAY = 'MM/DD';
+export const MONTH = 'MMM, YYYY';
+export const DAY = 'MMM, DD';
 export const TIME = 'HH:mm';
 export const FULL_TIME = 'MMM DD, YYYY HH:mm';
 export const EXACT_DAY = 'dddd';
