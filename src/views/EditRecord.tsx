@@ -3,7 +3,7 @@ import {useHistory, useParams} from 'react-router-dom';
 import Icon from '../components/Icon';
 import styled from 'styled-components';
 import RecordDetails from '../components/RecordDetails';
-import useRecords, {RawRecord} from '../hooks/useRecords';
+import useRecords, {TRecord} from '../hooks/useRecords';
 import {useState} from 'react';
 import Drawer from '../components/Drawer';
 import Money from '../components/NewMoney';
@@ -23,10 +23,10 @@ const Main = styled.section`
 const EditRecord: React.FC = () => {
   const {goBack, push} = useHistory();
   const {id} = useParams<TParams>();
-  const {rawRecordList, deleteRecord, editRecord} = useRecords();
+  const {recordList, deleteRecord, editRecord} = useRecords();
   const [showMoney, toggleMoney] = useState(false);
 
-  const rawRecord = rawRecordList.find(r => r.id === id);
+  const rawRecord = recordList.find(r => r.id === id);
   if (!rawRecord) return <div>Record does not exist</div>;
 
   const onDelete = (id: string) => {
@@ -35,7 +35,7 @@ const EditRecord: React.FC = () => {
     alert('Deleted Successfully');
   };
 
-  const onEdit = (rawRecord: RawRecord) => {
+  const onEdit = (rawRecord: TRecord) => {
     editRecord(rawRecord);
     alert('Edited Successfully');
   };

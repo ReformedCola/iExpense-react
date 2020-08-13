@@ -3,36 +3,37 @@ import dayjs, {Dayjs} from 'dayjs';
 import {DAY, EXACT_DAY, MONTH} from 'lib/date';
 import {ALL_TYPE} from 'lib/category';
 
-export type RecordType = 'expense' | 'income'
+export type TRecordType = 'expense' | 'income'
 
-export type RawRecord = {
+export type TRecord = {
   id: string
   date: string
   categoryId: string
   amount: number
   note: string
-  type: RecordType
+  type: TRecordType
 }
 
-export type Record = {
+export type TFilteredRecord = {
   incomeTotal: number
   expenseTotal: number
 }
 
-export type TDayRecord = Record & {
+export type TDayRecord = TFilteredRecord & {
   day: string
-  recordList: RawRecord[]
+  exactDay: string
+  recordList: TRecord[]
 }
 
-export type TMonthRecord = Record & {
+export type TMonthRecord = TFilteredRecord & {
   month: string
   recordList: TDayRecord[]
 }
 
-export const DEFAULT_RECORDS: RawRecord[] = [
+export const DEFAULT_RECORDS: TRecord[] = [
   {
     id: '1',
-    date: dayjs('2020-03-01').toISOString(),
+    date: dayjs('2020-06-01 20:00').toISOString(),
     categoryId: '4',
     amount: 300,
     note: 'Dinner',
@@ -40,7 +41,7 @@ export const DEFAULT_RECORDS: RawRecord[] = [
   },
   {
     id: '2',
-    date: dayjs('2020-04-02').toISOString(),
+    date: dayjs('2020-05-02 12:00').toISOString(),
     categoryId: '9',
     amount: 400,
     note: 'Wage',
@@ -48,7 +49,7 @@ export const DEFAULT_RECORDS: RawRecord[] = [
   },
   {
     id: '3',
-    date: dayjs('2020-05-03').toISOString(),
+    date: dayjs('2020-04-03 15:00').toISOString(),
     categoryId: '1',
     amount: 200,
     note: 'Shopping',
@@ -56,7 +57,7 @@ export const DEFAULT_RECORDS: RawRecord[] = [
   },
   {
     id: '4',
-    date: dayjs('2020-06-04').toISOString(),
+    date: dayjs('2020-03-04 8:00').toISOString(),
     categoryId: '5',
     amount: 500,
     note: 'Korea',
@@ -65,9 +66,10 @@ export const DEFAULT_RECORDS: RawRecord[] = [
 ];
 
 // append single record
-export const appendRecord = (prevRecordList: TMonthRecord[], rawRecord: RawRecord) => {
-  const month = dayjs(rawRecord.date).format(MONTH);
-  const day = dayjs(rawRecord.date).format(DAY);
+export const appendRecord = (prevRecordList: TMonthRecord[], record: TRecord) => {
+  const month = dayjs(record.date).format(MONTH);
+  const day = dayjs(record.date).format(DAY);
+  const exactDay = dayjs(record.date).format(EXACT_DAY);
 
   // find month
   let monthRecord = prevRecordList.find((m: TMonthRecord) => m.month === month);
@@ -79,20 +81,19 @@ export const appendRecord = (prevRecordList: TMonthRecord[], rawRecord: RawRecor
   // find day
   let dayRecord = monthRecord.recordList.find((d: TDayRecord) => d.day === day);
   if (!dayRecord) {
-    dayRecord = {day, incomeTotal: 0, expenseTotal: 0, recordList: []};
+    dayRecord = {day, exactDay, incomeTotal: 0, expenseTotal: 0, recordList: []};
     monthRecord.recordList.push(dayRecord);
   }
 
   // insert record
-  dayRecord.recordList.push(rawRecord);
+  dayRecord.recordList.push(record);
 
   // update total
-  updateTotal(monthRecord, dayRecord, rawRecord);
+  updateTotal(monthRecord, dayRecord, record);
 };
 
-const updateTotal = (monthRecord: TMonthRecord, dayRecord: TDayRecord, rawRecord: RawRecord) => {
-  const {amount, type} = rawRecord;
-
+const updateTotal = (monthRecord: TMonthRecord, dayRecord: TDayRecord, record: TRecord) => {
+  const {amount, type} = record;
   if (type === 'expense') {
     dayRecord.expenseTotal += amount;
     monthRecord.expenseTotal += amount;
@@ -103,18 +104,16 @@ const updateTotal = (monthRecord: TMonthRecord, dayRecord: TDayRecord, rawRecord
 };
 
 // append multiple records
-export const bulkAppendRecords = (prevRecordList: TMonthRecord[], rawRecordList: RawRecord[]) => {
+export const bulkAppendRecords = (prevRecordList: TMonthRecord[], newRecordList: TRecord[]) => {
   let recordList: TMonthRecord[] = JSON.parse(JSON.stringify(prevRecordList));
-
-  rawRecordList.forEach((rawRecord: RawRecord) => {
-    appendRecord(recordList, rawRecord);
+  newRecordList.forEach((record: TRecord) => {
+    appendRecord(recordList, record);
   });
-
   return recordList;
 };
 
 export const parseMonthRecord = (monthRecord: TMonthRecord) => {
-  let rawRecordList: RawRecord[] = [];
+  let rawRecordList: TRecord[] = [];
   monthRecord.recordList.forEach(m =>
     m.recordList.forEach((d =>
       rawRecordList.push(d))
@@ -124,97 +123,84 @@ export const parseMonthRecord = (monthRecord: TMonthRecord) => {
 };
 
 const useRecords = () => {
-  const ITEM_NAME = 'rawRecordList';
+  const ITEM_NAME = 'recordList';
 
-  const [rawRecordList, setRawRecordList] = useState<RawRecord[]>([]);
-  const [recordList, setRecordList] = useState<TMonthRecord[]>([]);
+  const [recordList, setRecordList] = useState<TRecord[]>([]);
+  const [filteredRecordList, setFilteredRecordList] = useState<TMonthRecord[]>([]);
 
   useEffect(() => fetchData(), []);
 
   const fetchData = () => {
-    const rawString = window.localStorage.getItem(ITEM_NAME);
-
-    const rawRecordList = rawString ? JSON.parse(rawString) : DEFAULT_RECORDS;
-
-    setRawRecordList(rawRecordList);
-    setRecordList(bulkAppendRecords([], rawRecordList));
+    const ITEM = window.localStorage.getItem(ITEM_NAME);
+    const records = ITEM ? JSON.parse(ITEM) : DEFAULT_RECORDS;
+    setRecordList(records);
+    setFilteredRecordList(bulkAppendRecords([], records));
   };
 
   const getMonthRecord = (month: string) => {
-    return recordList.find(m => m.month === month);
+    return filteredRecordList.find(record => record.month === month);
   };
 
-  const addRawRecord = (rawRecord: RawRecord) => {
-    const newRawRecordList = [rawRecord, ...rawRecordList];
-
-    window.localStorage.setItem(ITEM_NAME, JSON.stringify(newRawRecordList));
-
-    setRawRecordList(newRawRecordList);
-    setRecordList(bulkAppendRecords([], newRawRecordList));
+  const addRecord = (record: TRecord) => {
+    const newRecords = [record, ...recordList];
+    window.localStorage.setItem(ITEM_NAME, JSON.stringify(newRecords));
+    setRecordList(newRecords);
+    setFilteredRecordList(bulkAppendRecords([], newRecords));
   };
 
-  const filterRecordList = (categoryId: string, month: Dayjs, type: RecordType) => {
-    const filtered = rawRecordList.filter(r => {
-      if (categoryId === ALL_TYPE) return true; // for all types
-      return r.type === type && r.categoryId === categoryId; // for corresponding type and category
-    }).filter(r => {
+  const filterRecordList = (filterId: string, month: Dayjs, type: TRecordType) => {
+    const filtered = recordList.filter(record => {
+      if (filterId === ALL_TYPE) return true; // for all types
+      return record.type === type && record.categoryId === filterId; // for corresponding type and category
+    }).filter(record => {
       if (month.isSame(dayjs(), 'month')) return true; // for month
-      return dayjs(r.date).isSame(month, 'month'); // for corresponding month
+      return dayjs(record.date).isSame(month, 'month'); // for corresponding month
     });
-
     return bulkAppendRecords([], filtered);
   };
 
   const deleteRecord = (id: string) => {
-    const newRawRecordList = rawRecordList.filter(r => r.id !== id);
-
+    const newRecords = recordList.filter(record => record.id !== id);
     // save
-    window.localStorage.setItem(ITEM_NAME, JSON.stringify(newRawRecordList));
-
-    setRawRecordList(newRawRecordList);
-    setRecordList(bulkAppendRecords([], newRawRecordList));
+    window.localStorage.setItem(ITEM_NAME, JSON.stringify(newRecords));
+    setRecordList(newRecords);
+    setFilteredRecordList(bulkAppendRecords([], newRecords));
   };
 
-  const editRecord = (rawRecord: RawRecord) => {
-    const copy: RawRecord[] = JSON.parse(JSON.stringify(rawRecordList));
+  const editRecord = (record: TRecord) => {
+    const clone: TRecord[] = JSON.parse(JSON.stringify(recordList));
     let index = -1;
-
     // find record
-    copy.some((r, i) => {
-      if (r.id === rawRecord.id) {
+    clone.some((r, i) => {
+      if (r.id === record.id) {
         index = i;
         return true;
       }
       return false;
     });
-
-    const newRawRecordList = [
-      ...copy.slice(0, index),
-      {...rawRecord},
-      ...copy.slice(index + 1)
+    const newRecords = [
+      ...clone.slice(0, index),
+      {...record},
+      ...clone.slice(index + 1)
     ];
-
-    window.localStorage.setItem(ITEM_NAME, JSON.stringify(newRawRecordList));
-
-    setRawRecordList(newRawRecordList);
-    setRecordList(bulkAppendRecords([], newRawRecordList));
+    window.localStorage.setItem(ITEM_NAME, JSON.stringify(newRecords));
+    setRecordList(newRecords);
+    setFilteredRecordList(bulkAppendRecords([], newRecords));
   };
 
   return {
-    rawRecordList,
     recordList,
-    setRawRecordList,
+    filteredRecordList,
+    setRecordList,
     appendRecord,
     bulkAppendRecords,
-    addRawRecord,
+    addRecord,
     getMonthRecord,
     fetchData,
     filterRecordList,
     deleteRecord,
-    editRecord
-
+    editRecord,
   };
-
 };
 
 export default useRecords;

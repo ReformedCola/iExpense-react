@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useState} from 'react';
 import dayjs, {Dayjs} from 'dayjs';
 import {ALL_CATEGORIES, ALL_TYPE} from 'lib/category';
-import useRecords, {RawRecord, RecordType} from 'hooks/useRecords';
+import useRecords, {TRecord, TRecordType} from 'hooks/useRecords';
 import Layout from 'components/Layout';
 import styled from 'styled-components';
 import Icon from 'components/Icon';
@@ -72,11 +72,11 @@ const Summary: React.FC = () => {
 
   //
   const [month, setMonth] = useState(dayjs());
-  // 类型的 id, 默认为 -1
+  // 类型的 id, 默认为 -1, 即为全部类型
   const [filterId, setFilterId] = useState(ALL_TYPE);
-  const [filterType, setFilterType] = useState<RecordType>('expense');
+  const [filterType, setFilterType] = useState<TRecordType>('expense');
 
-  const {fetchData, addRawRecord, filterRecordList} = useRecords();
+  const {fetchData, addRecord, filterRecordList} = useRecords();
 
   const recordList = filterRecordList(filterId, month, filterType);
   const [firstMonth] = recordList;
@@ -89,9 +89,8 @@ const Summary: React.FC = () => {
     toggleMoney(false);
   };
 
-  const onAddRecord = (newRawRecord: RawRecord) => {
-    addRawRecord(newRawRecord);
-
+  const onAddRecord = (record: TRecord) => {
+    addRecord(record);
     alert('Saved Successfully');
   };
 

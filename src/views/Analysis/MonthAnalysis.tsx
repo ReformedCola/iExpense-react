@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {parseMonthRecord, TMonthRecord, RecordType} from 'hooks/useRecords';
+import {parseMonthRecord, TMonthRecord, TRecordType} from 'hooks/useRecords';
 import {getPrevMonths} from 'components/MonthPanel';
 import {Dayjs} from 'dayjs';
 import {MONTH} from 'lib/date';
@@ -44,7 +44,7 @@ const getYData = (months: Dayjs[], getMonthRecord: Function) => {
 const MonthAnalysis: React.FC<Props> = (props) => {
   const {getMonthRecord} = props;
 
-  const [type, setType] = useState<RecordType>('expense');
+  const [type, setType] = useState<TRecordType>('expense');
 
   // compare by months
   const months = getPrevMonths();

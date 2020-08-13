@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {RawRecord} from '../hooks/useRecords';
+import {TRecord} from '../hooks/useRecords';
 import Category from './Category';
 import styled from 'styled-components';
 import {FULL_TIME} from '../lib/date';
@@ -9,7 +9,7 @@ import Divider from './Divider';
 import {DEFAULT_EXPENSE_CATEGORIES} from '../lib/category';
 
 type Props = {
-  rawRecord: RawRecord
+  rawRecord: TRecord
   onDelete: (id: string) => void
   onEdit: () => void
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {parseMonthRecord, RawRecord, RecordType, TMonthRecord} from 'hooks/useRecords';
+import {parseMonthRecord, TRecord, TRecordType, TMonthRecord} from 'hooks/useRecords';
 import {useState} from 'react';
 import Category, {TCategory} from 'components/Category';
 import {ALL_CATEGORIES} from 'lib/category';
@@ -62,7 +62,7 @@ const Empty = styled.div`
   color: ${props => props.theme.$subText};
 `;
 
-const classify = (rawRecordList: RawRecord[]) => {
+const classify = (rawRecordList: TRecord[]) => {
   let classified: { [key: string]: Class } = {};
   let total = 0;
 
@@ -92,7 +92,7 @@ const classify = (rawRecordList: RawRecord[]) => {
 const CategorySection: React.FC<Props> = (props) => {
   const {monthRecord} = props;
 
-  const [type, setType] = useState<RecordType>('expense');
+  const [type, setType] = useState<TRecordType>('expense');
 
   const rawRecordList = monthRecord ? parseMonthRecord(monthRecord).filter(r => r.type === type) : [];
   const classified = classify(rawRecordList);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Icon from './Icon';
 import {CATEGORY_COLOR} from 'lib/category';
-import {RecordType} from 'hooks/useRecords';
+import {TRecordType} from 'hooks/useRecords';
 
 export type TCategory = {
   id: string
@@ -12,7 +12,7 @@ export type TCategory = {
 
 type Props = {
   category: TCategory
-  recordType: RecordType | 'none'
+  recordType: TRecordType | 'none'
   size?: number
 }
 

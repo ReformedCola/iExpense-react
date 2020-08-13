@@ -42,13 +42,14 @@ const AmountSection = styled.section`
 `;
 
 const DayRecord: React.FC<Props> = (props) => {
-  const {day, expenseTotal, incomeTotal, recordList} = props.dayRecord;
+  const {day, exactDay, expenseTotal, incomeTotal, recordList} = props.dayRecord;
 
   return (
     <StyledDayRecord>
       <Header>
         <DateSection>
           <span style={{marginRight: 8}}>{day}</span>
+          <span>{exactDay}</span>
         </DateSection>
         <AmountSection>
           <Tag>+</Tag>

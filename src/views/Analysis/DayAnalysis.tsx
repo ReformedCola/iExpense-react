@@ -3,7 +3,7 @@ import {useState} from 'react';
 import ReactEcharts from 'echarts-for-react';
 import styled from 'styled-components';
 import Button from 'components/NewButton';
-import {parseMonthRecord, TMonthRecord, RawRecord, RecordType} from 'hooks/useRecords';
+import {parseMonthRecord, TMonthRecord, TRecord, TRecordType} from 'hooks/useRecords';
 import dayjs, {Dayjs} from 'dayjs';
 import {getDaysInMonth} from 'lib/date';
 import {barChart} from 'lib/chart';
@@ -26,7 +26,7 @@ const Main = styled.div`
   margin: 0 -24px;
 `;
 
-const getYData = (days: number[], rawRecordList: RawRecord[]) => {
+const getYData = (days: number[], rawRecordList: TRecord[]) => {
   return days.map(d => {
     const record = rawRecordList.find(r => dayjs(r.date).get('date') === d);
     return record ? record.amount : 0.00;
@@ -36,7 +36,7 @@ const getYData = (days: number[], rawRecordList: RawRecord[]) => {
 const DayAnalysis: React.FC<Props> = (props) => {
   const {month, monthRecord} = props;
 
-  const [type, setType] = useState<RecordType>('expense');
+  const [type, setType] = useState<TRecordType>('expense');
 
   const rawRecordList = monthRecord ? parseMonthRecord(monthRecord).filter(r => r.type === type) : [];
 

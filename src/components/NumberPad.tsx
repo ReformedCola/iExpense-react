@@ -1,16 +1,16 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {RecordType} from 'hooks/useRecords';
+import {TRecordType} from 'hooks/useRecords';
 
 type Props = {
   value: string
-  recordType: RecordType
+  recordType: TRecordType
   onChange: (newValue: string) => void
   onOK: () => void
 }
 
 type TStyledNumberPad = {
-  recordType: RecordType
+  recordType: TRecordType
   value: string
 }
 

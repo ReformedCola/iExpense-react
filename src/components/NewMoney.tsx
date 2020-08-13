@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {RawRecord, RecordType} from 'hooks/useRecords';
+import {TRecord, TRecordType} from 'hooks/useRecords';
 import Button from './NewButton';
 import NumberPad from './NumberPad';
 import {DEFAULT_EXPENSE_CATEGORIES, DEFAULT_INCOME_CATEGORIES} from 'lib/category';
@@ -14,9 +14,9 @@ import Category from './Category';
 //#93B8CA
 
 type Props = {
-  value?: RawRecord
+  value?: TRecord
   closeDrawer: () => void
-  onSubmit: (newRawRecord: RawRecord) => void
+  onSubmit: (newRawRecord: TRecord) => void
 }
 
 const TypeSection = styled.section`
@@ -92,7 +92,7 @@ const NumberPadSection = styled.section`
 const Money: React.FC<Props> = (props) => {
   const {closeDrawer, onSubmit, value} = props;
 
-  const rawRecord: RawRecord = value ? value : {
+  const rawRecord: TRecord = value ? value : {
     date: new Date().toISOString(),
     id: new Date().getTime().toString(),
     amount: 0,
@@ -101,7 +101,7 @@ const Money: React.FC<Props> = (props) => {
     type: 'expense'
   };
 
-  const [type, setType] = useState<RecordType>(rawRecord.type);
+  const [type, setType] = useState<TRecordType>(rawRecord.type);
   const [amount, setAmount] = useState(rawRecord.amount);
   const [amountString, setAmountString] = useState(rawRecord.amount.toString());
   const [categoryId, setCategoryId] = useState(rawRecord.categoryId);

@@ -1,7 +1,7 @@
 import theme from '../theme';
-import {RecordType} from 'hooks/useRecords';
+import {TRecordType} from 'hooks/useRecords';
 
-export const barChart = (xData: any[], yData: any[], type: RecordType) => {
+export const barChart = (xData: any[], yData: any[], type: TRecordType) => {
   const color = type === 'expense' ? theme.$success : theme.$warning;
   const name = type === 'expense' ? 'Expense' : 'Income';
 

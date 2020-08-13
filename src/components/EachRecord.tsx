@@ -3,13 +3,13 @@ import Category from './Category';
 import Divider from './Divider';
 import {DEFAULT_EXPENSE_CATEGORIES} from '../lib/category';
 import styled from 'styled-components';
-import {RawRecord} from 'hooks/useRecords';
+import {TRecord} from 'hooks/useRecords';
 import dayjs from 'dayjs';
 import {TIME} from '../lib/date';
 import {Link} from 'react-router-dom';
 
 type Props = {
-  record: RawRecord
+  record: TRecord
 }
 
 const StyledEachRecord = styled(Link)`

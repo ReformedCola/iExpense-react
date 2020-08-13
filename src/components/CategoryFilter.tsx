@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {ALL_TYPE, DEFAULT_EXPENSE_CATEGORIES, DEFAULT_INCOME_CATEGORIES} from 'lib/category';
-import {RecordType} from 'hooks/useRecords';
+import {TRecordType} from 'hooks/useRecords';
 import theme from 'theme';
 
 type Props = {
-  recordType: RecordType
+  recordType: TRecordType
   value: string
   closeDrawer: () => void
-  onSubmit: (id: string, type: RecordType) => void
+  onSubmit: (id: string, type: TRecordType) => void
 }
 
 type TCategoryItem = {
-  recordType: RecordType
+  recordType: TRecordType
   selected: boolean
 }
 
@@ -59,7 +59,7 @@ const CategoryItem = styled.div<TCategoryItem>`
 const CategoryFilter: React.FC<Props> = (props) => {
   const {value, recordType, closeDrawer, onSubmit} = props;
 
-  const submit = (id: string, type: RecordType) => {
+  const submit = (id: string, type: TRecordType) => {
     onSubmit(id, type);
     closeDrawer();
   };
