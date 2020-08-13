@@ -49,7 +49,6 @@ const DayRecord: React.FC<Props> = (props) => {
       <Header>
         <DateSection>
           <span style={{marginRight: 8}}>{day}</span>
-          <span>Tue</span>
         </DateSection>
         <AmountSection>
           <Tag>+</Tag>
