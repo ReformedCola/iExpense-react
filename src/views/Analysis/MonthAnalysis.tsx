@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {parseMonthRecord, TMonthRecord, TRecordType} from 'hooks/useRecords';
+import {TMonthRecord, TRecordType} from 'hooks/useRecords';
 import {getPrevMonths} from 'components/MonthPanel';
-import {Dayjs} from 'dayjs';
+import dayjs, {Dayjs} from 'dayjs';
 import {MONTH} from 'lib/date';
 import Button from 'components/NewButton';
 import {useState} from 'react';
@@ -26,17 +26,14 @@ const Main = styled.div`
   margin: 0 -24px;
 `;
 
-const getYData = (months: Dayjs[], getMonthRecord: Function) => {
+const getYData = (months: Dayjs[], getMonthRecord: Function, type: String) => {
   return months.map(m => {
     const monthRecord = getMonthRecord(m.format(MONTH));
+
     // 0 if none
     if (!monthRecord) return 0;
 
-    // calculate total
-    let total = 0;
-    parseMonthRecord(monthRecord).forEach(r => total += r.amount);
-
-    return total;
+    return type === 'expense' ? monthRecord.expenseTotal : monthRecord.incomeTotal;
   });
 };
 
@@ -48,8 +45,8 @@ const MonthAnalysis: React.FC<Props> = (props) => {
 
   // compare by months
   const months = getPrevMonths();
-  const xData = months.map(m => m.get('month'));
-  const yData = getYData(months, getMonthRecord);
+  const xData = months.map(m => dayjs(m).format('MMM'));
+  const yData = getYData(months, getMonthRecord, type);
 
   const monthChartOptions = barChart(xData, yData, type);
 
@@ -57,7 +54,6 @@ const MonthAnalysis: React.FC<Props> = (props) => {
     <div>
       <Header>
         <span>Months</span>
-
         <span>
           <Button recordType={type === 'expense' ? 'success' : 'none'}
                   size="small"
