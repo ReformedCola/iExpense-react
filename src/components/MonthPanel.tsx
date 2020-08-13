@@ -46,7 +46,7 @@ const MonthItem = styled.li<TMonthItem>`
 `;
 
 export const getPrevMonths = () => {
-  const DURATION = 9;
+  const DURATION = dayjs().month() + 1;
 
   return [...Array(DURATION)].map((_, index) => dayjs().subtract(index, 'month'));
 };
