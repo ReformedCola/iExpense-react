@@ -2,7 +2,7 @@ import * as React from 'react';
 import {AllHTMLAttributes} from 'react';
 import styled from 'styled-components';
 
-type Props = AllHTMLAttributes<HTMLDivElement> & {}
+type TProps = AllHTMLAttributes<HTMLDivElement> & {}
 
 const StyledSticker = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const StyledSticker = styled.div`
   border-radius: 50%;
 `;
 
-const Sticker: React.FC<Props> = (props) => {
+const Sticker: React.FC<TProps> = (props) => {
   const {onClick} = props;
 
   return (
@@ -29,4 +29,4 @@ const Sticker: React.FC<Props> = (props) => {
   );
 };
 
-export default Sticker;
+export {Sticker};

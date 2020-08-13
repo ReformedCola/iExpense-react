@@ -2,9 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {ALL_TYPE, DEFAULT_EXPENSE_CATEGORIES, DEFAULT_INCOME_CATEGORIES} from 'lib/category';
 import {TRecordType} from 'hooks/useRecords';
-import theme from 'theme';
+import {theme} from 'theme';
 
-type Props = {
+type TProps = {
   recordType: TRecordType
   value: string
   closeDrawer: () => void
@@ -56,7 +56,7 @@ const CategoryItem = styled.div<TCategoryItem>`
   color: ${props => props.selected ? 'white' : props.theme.$normalText}
 `;
 
-const CategoryFilter: React.FC<Props> = (props) => {
+const CategoryFilter: React.FC<TProps> = (props) => {
   const {value, recordType, closeDrawer, onSubmit} = props;
 
   const submit = (id: string, type: TRecordType) => {
@@ -103,4 +103,4 @@ const CategoryFilter: React.FC<Props> = (props) => {
   );
 };
 
-export default CategoryFilter;
+export {CategoryFilter};

@@ -1,4 +1,4 @@
-import theme from 'theme';
+import {theme} from 'theme';
 
 export const CATEGORY_COLOR = {
   none: {
@@ -16,7 +16,6 @@ export const CATEGORY_COLOR = {
 };
 
 export const ALL_TYPE = '-1';
-export const OTHER_TYPE = '0';
 
 export const ALL_CATEGORIES = [
   {

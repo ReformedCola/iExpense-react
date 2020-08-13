@@ -113,13 +113,13 @@ export const bulkAppendRecords = (prevRecordList: TMonthRecord[], newRecordList:
 };
 
 export const parseMonthRecord = (monthRecord: TMonthRecord) => {
-  let rawRecordList: TRecord[] = [];
+  let records: TRecord[] = [];
   monthRecord.recordList.forEach(m =>
     m.recordList.forEach((d =>
-      rawRecordList.push(d))
+      records.push(d))
     )
   );
-  return rawRecordList;
+  return records;
 };
 
 const useRecords = () => {
@@ -203,4 +203,4 @@ const useRecords = () => {
   };
 };
 
-export default useRecords;
+export {useRecords};

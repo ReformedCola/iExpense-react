@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Icon from './Icon';
+import {Icon} from './Icon';
 import {CATEGORY_COLOR} from 'lib/category';
 import {TRecordType} from 'hooks/useRecords';
 
@@ -10,7 +10,7 @@ export type TCategory = {
   iconName: string
 }
 
-type Props = {
+type TProps = {
   category: TCategory
   recordType: TRecordType | 'none'
   size?: number
@@ -34,7 +34,7 @@ const StyledCategory = styled.span<TStyledCategory>`
   }
 `;
 
-const Category: React.FC<Props> = (props) => {
+const Category: React.FC<TProps> = (props) => {
   const {category, recordType, size} = props;
 
   const color = CATEGORY_COLOR[recordType];
@@ -50,4 +50,4 @@ Category.defaultProps = {
   size: 24
 };
 
-export default Category;
+export {Category};

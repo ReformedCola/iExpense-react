@@ -1,4 +1,4 @@
-import theme from '../theme';
+import {theme} from 'theme';
 import {TRecordType} from 'hooks/useRecords';
 
 export const barChart = (xData: any[], yData: any[], type: TRecordType) => {

@@ -1,18 +1,18 @@
 import * as React from 'react';
-import {parseMonthRecord, TRecord, TRecordType, TMonthRecord} from 'hooks/useRecords';
 import {useState} from 'react';
-import Category, {TCategory} from 'components/Category';
-import {ALL_CATEGORIES} from 'lib/category';
 import styled from 'styled-components';
-import Button from 'components/NewButton';
-import ProgressBar from 'components/ProgressBar';
-import theme from 'theme';
+import {Category, TCategory} from 'components/Category';
+import {Button} from 'components/Button';
+import {ProgressBar} from 'components/ProgressBar';
+import {theme} from 'theme';
+import {parseMonthRecord, TRecord, TRecordType, TMonthRecord} from 'hooks/useRecords';
+import {ALL_CATEGORIES} from 'lib/category';
 
-type Props = {
+type TProps = {
   monthRecord?: TMonthRecord
 }
 
-type Class = {
+type TClass = {
   amount: number
   category: TCategory
   ratio: number
@@ -62,11 +62,11 @@ const Empty = styled.div`
   color: ${props => props.theme.$subText};
 `;
 
-const classify = (rawRecordList: TRecord[]) => {
-  let classified: { [key: string]: Class } = {};
+const classify = (recordList: TRecord[]) => {
+  let classified: { [key: string]: TClass } = {};
   let total = 0;
 
-  rawRecordList.forEach(r => {
+  recordList.forEach(r => {
     const {categoryId} = r;
 
     if (!(categoryId in classified)) {
@@ -89,13 +89,13 @@ const classify = (rawRecordList: TRecord[]) => {
 };
 
 
-const CategorySection: React.FC<Props> = (props) => {
+const CategorySection: React.FC<TProps> = (props) => {
   const {monthRecord} = props;
 
   const [type, setType] = useState<TRecordType>('expense');
 
-  const rawRecordList = monthRecord ? parseMonthRecord(monthRecord).filter(r => r.type === type) : [];
-  const classified = classify(rawRecordList);
+  const recordList = monthRecord ? parseMonthRecord(monthRecord).filter(r => r.type === type) : [];
+  const classified = classify(recordList);
   return (
     <Section>
       <Header>
@@ -141,4 +141,4 @@ const CategorySection: React.FC<Props> = (props) => {
   );
 };
 
-export default CategorySection;
+export {CategorySection};

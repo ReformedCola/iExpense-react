@@ -1,12 +1,12 @@
 import * as React from 'react';
-import DayRecord from './DayRecord';
-import {TMonthRecord} from 'hooks/useRecords';
 import styled from 'styled-components';
-import Divider from './Divider';
 import dayjs from 'dayjs';
-import {MONTH} from '../lib/date';
+import {DayRecord} from './DayRecord';
+import {Divider} from './Divider';
+import {TMonthRecord} from 'hooks/useRecords';
+import {MONTH} from 'lib/date';
 
-type Props = {
+type TProps = {
   monthRecord: TMonthRecord
 }
 
@@ -20,7 +20,7 @@ const Header = styled.div`
 
 const RecordList = styled.li``;
 
-const MonthRecord: React.FC<Props> = (props) => {
+const MonthRecord: React.FC<TProps> = (props) => {
   const {month, recordList, incomeTotal, expenseTotal} = props.monthRecord;
 
   const currentMonth = dayjs().format(MONTH);
@@ -51,4 +51,4 @@ const MonthRecord: React.FC<Props> = (props) => {
   );
 };
 
-export default MonthRecord;
+export {MonthRecord};

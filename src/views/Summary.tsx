@@ -1,20 +1,21 @@
 import * as React from 'react';
 import {useState} from 'react';
-import dayjs, {Dayjs} from 'dayjs';
-import {ALL_CATEGORIES, ALL_TYPE} from 'lib/category';
-import useRecords, {TRecord, TRecordType} from 'hooks/useRecords';
-import Layout from 'components/Layout';
 import styled from 'styled-components';
-import Icon from 'components/Icon';
-import Divider from 'components/Divider';
+import dayjs, {Dayjs} from 'dayjs';
+import {Layout} from 'components/Layout';
+import {Icon} from 'components/Icon';
+import {Divider} from 'components/Divider';
+import {MonthRecord} from 'components/MonthRecord';
+import {Sticker} from 'components/Sticker';
+import {Drawer} from 'components/Drawer';
+import {MonthPanel} from 'components/MonthPanel';
+import {CategoryFilter} from 'components/CategoryFilter';
+import {Money} from 'components/Money';
+import {theme} from 'theme';
+import {useRecords, TRecord, TRecordType} from 'hooks/useRecords';
 import {MONTH} from 'lib/date';
-import MonthRecord from 'components/MonthRecord';
-import theme from 'theme';
-import Sticker from 'components/Sticker';
-import Drawer from 'components/Drawer';
-import MonthPanel from 'components/MonthPanel';
-import CategoryFilter from 'components/CategoryFilter';
-import Money from 'components/NewMoney';
+import {ALL_CATEGORIES, ALL_TYPE} from 'lib/category';
+
 
 const FilterWrapper = styled.section`
   padding: 0 12px;
@@ -63,16 +64,11 @@ const Empty = styled.div`
 
 
 const Summary: React.FC = () => {
-  // 月份选择, 默认为关闭
   const [showMonth, toggleMonth] = useState(false);
-  // 类型选择, 默认为关闭
   const [showFilter, toggleFilter] = useState(false);
-  // 记账页面打开/关闭, 默认为关闭
   const [showMoney, toggleMoney] = useState(false);
 
-  //
   const [month, setMonth] = useState(dayjs());
-  // 类型的 id, 默认为 -1, 即为全部类型
   const [filterId, setFilterId] = useState(ALL_TYPE);
   const [filterType, setFilterType] = useState<TRecordType>('expense');
 
@@ -81,7 +77,6 @@ const Summary: React.FC = () => {
   const recordList = filterRecordList(filterId, month, filterType);
   const [firstMonth] = recordList;
 
-  // 找到对应 id 的类型
   const filter = ALL_CATEGORIES.find(c => c.id === filterId);
 
   const closeMoney = () => {
@@ -96,7 +91,6 @@ const Summary: React.FC = () => {
 
   return (
     <Layout>
-      {/*类型选择按钮*/}
       <FilterWrapper>
         <section>
           <TypeButton onClick={() => toggleFilter(true)}>
@@ -106,7 +100,6 @@ const Summary: React.FC = () => {
           </TypeButton>
         </section>
 
-        {/*月份选择按钮*/}
         <MonthFilterSection>
           <MonthButton onClick={() => toggleMonth(true)}>
             <span style={{marginRight: 4}}>{month.format(MONTH)}</span>
@@ -175,4 +168,4 @@ const Summary: React.FC = () => {
   );
 };
 
-export default Summary;
+export {Summary};

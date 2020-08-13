@@ -1,90 +1,71 @@
-import Layout from 'components/Layout';
 import * as React from 'react';
-// import React, {ReactNode, useState} from 'react';
-// import {CategorySection} from './Money/CategorySection';
-// import styled from 'styled-components';
-// import {useTags} from 'hooks/useTags';
-// import day from 'dayjs';
+import {useState} from 'react';
+import styled from 'styled-components';
+import dayjs, {Dayjs} from 'dayjs';
+import {Layout} from 'components/Layout';
+import {Drawer} from 'components/Drawer';
+import {MonthPanel} from 'components/MonthPanel';
+import {Divider} from 'components/Divider';
+import {MonthFilterSection} from 'views/Statistics/MonthFilterSection';
+import {CategorySection} from 'views/Statistics/CategorySection';
+import {DayAnalysis} from 'views/Statistics/DayAnalysis';
+import {MonthAnalysis} from 'views/Statistics/MonthAnalysis';
+import {useRecords} from 'hooks/useRecords';
+import {MONTH} from 'lib/date';
 
-// const CategoryWrapper = styled.div`
-//   background: white; // #00a0e9
-// `;
-//
-// const Item = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   background: white;
-//   font-size: 18px;
-//   line-height: 20px;
-//   padding: 10px 16px;
-//   > .note {
-//    margin-right: auto;
-//    margin-left: 16px;
-//    color: #999;
-//   }
-// `;
-//
-// const Header = styled.h3`
-//   font-size: 18px;
-//   line-height: 20px;
-//   padding: 10px 16px;
-// `;
+const StyledAnalysis = styled.div`
+  flex-grow: 1;
+  overflow: auto;
+`;
 
-function Statistics() {
-  // const [category, setCategory] = useState<'-' | '+'>('-');
-  // const {records} = useRecords();
-  // const {getName} = useTags();
-  // const selectedRecords = records.filter(r => r.category === category);
-  // const hash: { [K: string]: RecordItem[] } = {};
-  // selectedRecords.forEach(r => {
-  //   const key = day(r.createdAt).format('MMM DD, YYYY');
-  //   if (!(key in hash)) {
-  //     hash[key] = [];
-  //   }
-  //   hash[key].push(r);
-  // });
+const Main = styled.section`
+  margin-top: 8px;
+  background: white;
+  padding: 24px;
+`;
 
-  // const array = Object.entries(hash).sort((a, b) => {
-  //   if (a[0] === b[0]) return 0;
-  //   if (a[0] > b[0]) return -1;
-  //   if (a[0] < b[0]) return 1;
-  //   return 0;
-  // });
+const Statistics: React.FC = () => {
+  const [showMonth, toggleMonth] = useState(false);
+  const [month, setMonth] = useState(dayjs());
+
+  const {getMonthRecord} = useRecords();
+
+  // selected month record
+  const selectedRecordList = getMonthRecord(month.format(MONTH));
 
   return (
     <Layout>
-      {/*<CategoryWrapper>*/}
-      {/*  <CategorySection value={category}*/}
-      {/*                   onChange={value => setCategory(value)}/>*/}
-      {/*</CategoryWrapper>*/}
-      {/*{array.map(([date, records]) => <div key={date}>*/}
-      {/*  <Header>*/}
-      {/*    {date}*/}
-      {/*  </Header>*/}
-      {/*  <div>*/}
-      {/*    {records.map(r => {*/}
-      {/*      return <Item key={r.createdAt}>*/}
-      {/*        <div className="tags oneLine">*/}
-      {/*          {r.tagIds*/}
-      {/*            .map(tagId => <span key={tagId}>{getName(tagId)}</span>)*/}
-      {/*            // [span, span, span]*/}
-      {/*            // [span, ',', span, ',', span]*/}
-      {/*            .reduce((result, span, index, array) =>*/}
-      {/*              result.concat(index < array.length - 1 ? [span, ', '] : [span]), [] as ReactNode[])*/}
-      {/*          }*/}
-      {/*        </div>*/}
-      {/*        {r.note && <div className="note">*/}
-      {/*          {r.note}*/}
-      {/*        </div>}*/}
-      {/*        <div className="amount">*/}
-      {/*          {r.amount}*/}
-      {/*        </div>*/}
-      {/*      </Item>;*/}
-      {/*    })}*/}
-      {/*  </div>*/}
-      {/*</div>)}*/}
+      <StyledAnalysis>
+        <MonthFilterSection monthRecord={selectedRecordList}
+                            month={month}
+                            showMonth={() => toggleMonth(true)}/>
+        <Main>
+          <CategorySection monthRecord={selectedRecordList}/>
+
+          <Divider direction="horizontal" gap={24}/>
+
+          <DayAnalysis month={month}
+                       monthRecord={selectedRecordList}
+          />
+
+          <Divider direction="horizontal" gap={24}/>
+
+          <MonthAnalysis getMonthRecord={getMonthRecord}/>
+        </Main>
+      </StyledAnalysis>
+
+
+      {/*choose month*/}
+      {
+        showMonth &&
+        <Drawer title="Select Month" closeDrawer={() => toggleMonth(false)}>
+          <MonthPanel value={month}
+                      closeDrawer={() => toggleMonth(false)}
+                      onSubmit={(newMonth: Dayjs) => setMonth(newMonth)}/>
+        </Drawer>
+      }
     </Layout>
   );
-}
+};
 
-export default Statistics;
+export {Statistics};

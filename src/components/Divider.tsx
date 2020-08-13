@@ -1,27 +1,27 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-type Direction = 'vertical' | 'horizontal'
+type TDirection = 'vertical' | 'horizontal'
 
-type Props = {
-  direction?: Direction
+type TProps = {
+  direction?: TDirection
   gap?: number
   color?: string
 }
 
-const VerticalDivider = styled.span<Props>(props => ({
+const VerticalDivider = styled.span<TProps>(props => ({
   borderRight: '1px solid',
   margin: `0 ${props.gap}px`,
   borderColor: props.color
 }));
 
-const HorizontalDivider = styled.div<Props>(props => ({
+const HorizontalDivider = styled.div<TProps>(props => ({
   borderBottom: '1px solid',
   margin: `${props.gap}px 0`,
   borderColor: props.color
 }));
 
-const Divider: React.FC<Props> = (props) => {
+const Divider: React.FC<TProps> = (props) => {
   const {direction} = props;
 
   return (
@@ -37,4 +37,4 @@ Divider.defaultProps = {
   color: '#eee'
 };
 
-export default Divider;
+export {Divider};

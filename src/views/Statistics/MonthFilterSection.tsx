@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Divider from 'components/Divider';
-import theme from 'theme';
-import Icon from 'components/Icon';
 import styled from 'styled-components';
-import {TMonthRecord} from 'hooks/useRecords';
 import {Dayjs} from 'dayjs';
+import {Divider} from 'components/Divider';
+import {Icon} from 'components/Icon';
+import {TMonthRecord} from 'hooks/useRecords';
+import {theme} from 'theme';
 import {MONTH} from 'lib/date';
 
-type Props = {
+type TProps = {
   showMonth: () => void
   month: Dayjs
   monthRecord?: TMonthRecord
@@ -49,7 +49,7 @@ const Income = styled.p`
   color: ${props => props.theme.$subText}
 `;
 
-const MonthFilterSection: React.FC<Props> = (props) => {
+const MonthFilterSection: React.FC<TProps> = (props) => {
   const {showMonth, month, monthRecord} = props;
 
   return (
@@ -76,4 +76,4 @@ const MonthFilterSection: React.FC<Props> = (props) => {
   );
 };
 
-export default MonthFilterSection;
+export {MonthFilterSection};

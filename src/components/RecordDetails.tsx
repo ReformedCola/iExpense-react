@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {TRecord} from '../hooks/useRecords';
-import Category from './Category';
 import styled from 'styled-components';
-import {FULL_TIME} from '../lib/date';
 import dayjs from 'dayjs';
-import Icon from './Icon';
-import Divider from './Divider';
-import {DEFAULT_EXPENSE_CATEGORIES} from '../lib/category';
+import {Category} from './Category';
+import {Icon} from './Icon';
+import {Divider} from './Divider';
+import {TRecord} from 'hooks/useRecords';
+import {FULL_TIME} from 'lib/date';
+import {DEFAULT_EXPENSE_CATEGORIES} from 'lib/category';
 
-type Props = {
-  rawRecord: TRecord
+type TProps = {
+  record: TRecord
   onDelete: (id: string) => void
   onEdit: () => void
 }
@@ -62,9 +62,9 @@ const DeleteButton = styled.button`
   }
 `;
 
-const RecordDetails: React.FC<Props> = (props) => {
-  const {rawRecord, onDelete, onEdit} = props;
-  const {id, amount, type, date, note, categoryId} = rawRecord;
+const RecordDetails: React.FC<TProps> = (props) => {
+  const {record, onDelete, onEdit} = props;
+  const {id, amount, type, date, note, categoryId} = record;
 
   const category = DEFAULT_EXPENSE_CATEGORIES.find(c => c.id === categoryId);
   if (!category) return <div>Record does not exist</div>;
@@ -111,4 +111,4 @@ const RecordDetails: React.FC<Props> = (props) => {
   );
 };
 
-export default RecordDetails;
+export {RecordDetails};

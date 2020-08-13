@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import dayjs, {Dayjs} from 'dayjs';
 
-type Props = {
+type TProps = {
   value: Dayjs
   closeDrawer: () => void
   onSubmit: (newMonth: Dayjs) => void
@@ -51,7 +51,7 @@ export const getPrevMonths = () => {
   return [...Array(DURATION)].map((_, index) => dayjs().subtract(index, 'month'));
 };
 
-const MonthPanel: React.FC<Props> = (props) => {
+const MonthPanel: React.FC<TProps> = (props) => {
   const {closeDrawer, value, onSubmit} = props;
 
   const thisYear = dayjs();
@@ -105,4 +105,4 @@ const MonthPanel: React.FC<Props> = (props) => {
   );
 };
 
-export default MonthPanel;
+export {MonthPanel};

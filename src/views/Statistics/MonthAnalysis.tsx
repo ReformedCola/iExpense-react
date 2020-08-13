@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {TMonthRecord, TRecordType} from 'hooks/useRecords';
-import {getPrevMonths} from 'components/MonthPanel';
-import dayjs, {Dayjs} from 'dayjs';
-import {MONTH} from 'lib/date';
-import Button from 'components/NewButton';
 import {useState} from 'react';
-import styled from 'styled-components';
 import ReactEcharts from 'echarts-for-react';
+import styled from 'styled-components';
+import dayjs, {Dayjs} from 'dayjs';
+import {getPrevMonths} from 'components/MonthPanel';
+import {Button} from 'components/Button';
+import {TMonthRecord, TRecordType} from 'hooks/useRecords';
 import {barChart} from 'lib/chart';
+import {MONTH} from 'lib/date';
 
-type Props = {
+type TProps = {
   getMonthRecord: (month: string) => TMonthRecord | undefined
 }
 
@@ -38,7 +38,7 @@ const getYData = (months: Dayjs[], getMonthRecord: Function, type: String) => {
 };
 
 
-const MonthAnalysis: React.FC<Props> = (props) => {
+const MonthAnalysis: React.FC<TProps> = (props) => {
   const {getMonthRecord} = props;
 
   const [type, setType] = useState<TRecordType>('expense');
@@ -75,4 +75,4 @@ const MonthAnalysis: React.FC<Props> = (props) => {
   );
 };
 
-export default MonthAnalysis;
+export {MonthAnalysis};

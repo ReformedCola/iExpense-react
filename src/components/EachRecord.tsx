@@ -1,14 +1,14 @@
 import * as React from 'react';
-import Category from './Category';
-import Divider from './Divider';
-import {DEFAULT_EXPENSE_CATEGORIES} from '../lib/category';
+import {Category} from './Category';
+import {Divider} from './Divider';
+import {DEFAULT_EXPENSE_CATEGORIES} from 'lib/category';
 import styled from 'styled-components';
 import {TRecord} from 'hooks/useRecords';
 import dayjs from 'dayjs';
-import {TIME} from '../lib/date';
+import {TIME} from 'lib/date';
 import {Link} from 'react-router-dom';
 
-type Props = {
+type TProps = {
   record: TRecord
 }
 
@@ -33,7 +33,7 @@ const StyledEachRecord = styled(Link)`
   }
 `;
 
-const EachRecord: React.FC<Props> = (props) => {
+const EachRecord: React.FC<TProps> = (props) => {
   const {id, date, amount, categoryId, note, type} = props.record;
 
   const category = DEFAULT_EXPENSE_CATEGORIES.find(c => c.id === categoryId);
@@ -60,4 +60,4 @@ const EachRecord: React.FC<Props> = (props) => {
   );
 };
 
-export default EachRecord;
+export {EachRecord};

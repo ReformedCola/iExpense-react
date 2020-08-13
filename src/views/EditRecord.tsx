@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {useHistory, useParams} from 'react-router-dom';
-import Icon from '../components/Icon';
-import styled from 'styled-components';
-import RecordDetails from '../components/RecordDetails';
-import useRecords, {TRecord} from '../hooks/useRecords';
 import {useState} from 'react';
-import Drawer from '../components/Drawer';
-import Money from '../components/NewMoney';
+import {useHistory, useParams} from 'react-router-dom';
+import styled from 'styled-components';
+import {Icon} from 'components/Icon';
+import {RecordDetails} from 'components/RecordDetails';
+import {Drawer} from 'components/Drawer';
+import {Money} from 'components/Money';
+import {useRecords, TRecord} from 'hooks/useRecords';
 
 type TParams = {
   id: string
@@ -26,8 +26,8 @@ const EditRecord: React.FC = () => {
   const {recordList, deleteRecord, editRecord} = useRecords();
   const [showMoney, toggleMoney] = useState(false);
 
-  const rawRecord = recordList.find(r => r.id === id);
-  if (!rawRecord) return <div>Record does not exist</div>;
+  const record = recordList.find(r => r.id === id);
+  if (!record) return <div>Record does not exist</div>;
 
   const onDelete = (id: string) => {
     deleteRecord(id);
@@ -35,8 +35,8 @@ const EditRecord: React.FC = () => {
     alert('Deleted Successfully');
   };
 
-  const onEdit = (rawRecord: TRecord) => {
-    editRecord(rawRecord);
+  const onEdit = (record: TRecord) => {
+    editRecord(record);
     alert('Edited Successfully');
   };
 
@@ -48,18 +48,18 @@ const EditRecord: React.FC = () => {
       <Main>
         <RecordDetails onDelete={onDelete}
                        onEdit={() => toggleMoney(true)}
-                       rawRecord={rawRecord}/>
+                       record={record}/>
       </Main>
       {
         showMoney &&
         <Drawer closeDrawer={() => toggleMoney(false)}>
           <Money closeDrawer={() => toggleMoney(false)}
                  onSubmit={onEdit}
-                 value={rawRecord}/>
+                 value={record}/>
         </Drawer>
       }
     </div>
   );
 };
 
-export default EditRecord;
+export {EditRecord};

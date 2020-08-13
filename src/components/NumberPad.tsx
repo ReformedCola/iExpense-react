@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {TRecordType} from 'hooks/useRecords';
 
-type Props = {
+type TProps = {
   value: string
   recordType: TRecordType
   onChange: (newValue: string) => void
@@ -74,7 +74,7 @@ const updateAmount = (prevValue: string, text: string) => {
   return newValue;
 };
 
-const NumberPad: React.FC<Props> = (props) => {
+const NumberPad: React.FC<TProps> = (props) => {
   const {value, onOK, onChange, recordType} = props;
 
   const onDel = () => {
@@ -126,4 +126,4 @@ const NumberPad: React.FC<Props> = (props) => {
   );
 };
 
-export default NumberPad;
+export {NumberPad};

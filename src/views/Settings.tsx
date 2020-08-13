@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {useState} from 'react';
-import Layout from 'components/Layout';
 import styled from 'styled-components';
-import Icon from 'components/Icon';
-import Drawer from 'components/Drawer';
+import {Layout} from 'components/Layout';
+import {Icon} from 'components/Icon';
+import {Drawer} from 'components/Drawer';
 
 const Main = styled.div`
   flex-grow: 1;
@@ -96,4 +96,4 @@ const Settings: React.FC = () => {
   );
 };
 
-export default Settings;
+export {Settings};

@@ -1,14 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
-import theme from 'theme';
-// import cs from 'classnames';
+import {theme} from 'theme';
 
 let importAll = (requireContext: __WebpackModuleApi.RequireContext) => requireContext.keys().forEach(requireContext);
 try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {console.log(error);}
-
-// type Props = {
-//   name?: string
-// } & React.SVGAttributes<SVGElement>
 
 type TProps = {
   name: string
@@ -29,9 +24,6 @@ const IconWrapper = styled.svg<TIconWrapper>(props => ({
 const Icon: React.FC<TProps> = (props) => {
   const {name, color, size, ...attributes} = props;
   return (
-    // <svg className={cs('icon', className)} {...rest}>
-    //   {props.name && <use xlinkHref={'#' + props.name}/>}
-    // </svg>
     <IconWrapper size={size!}
                  color={color}
                  className="icon"
@@ -47,4 +39,4 @@ Icon.defaultProps = {
   color: theme.$normalText
 };
 
-export default Icon;
+export {Icon};

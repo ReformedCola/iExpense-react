@@ -1,22 +1,16 @@
-import React, {useState} from 'react';
+import * as React from 'react';
+import {useState} from 'react';
 import styled from 'styled-components';
+import {Button} from './Button';
+import {NumberPad} from './NumberPad';
+import {Category} from './Category';
 import {TRecord, TRecordType} from 'hooks/useRecords';
-import Button from './NewButton';
-import NumberPad from './NumberPad';
 import {DEFAULT_EXPENSE_CATEGORIES, DEFAULT_INCOME_CATEGORIES} from 'lib/category';
-import Category from './Category';
 
-//#00a0e9
-//#c4c4c4
-//#87cefa
-//#1777ff
-//#D4ECF9
-//#93B8CA
-
-type Props = {
+type TProps = {
   value?: TRecord
   closeDrawer: () => void
-  onSubmit: (newRawRecord: TRecord) => void
+  onSubmit: (newRecord: TRecord) => void
 }
 
 const TypeSection = styled.section`
@@ -89,10 +83,10 @@ const NumberPadSection = styled.section`
   background: #FAFAFA;
 `;
 
-const Money: React.FC<Props> = (props) => {
+const Money: React.FC<TProps> = (props) => {
   const {closeDrawer, onSubmit, value} = props;
 
-  const rawRecord: TRecord = value ? value : {
+  const record: TRecord = value ? value : {
     date: new Date().toISOString(),
     id: new Date().getTime().toString(),
     amount: 0,
@@ -101,11 +95,11 @@ const Money: React.FC<Props> = (props) => {
     type: 'expense'
   };
 
-  const [type, setType] = useState<TRecordType>(rawRecord.type);
-  const [amount, setAmount] = useState(rawRecord.amount);
-  const [amountString, setAmountString] = useState(rawRecord.amount.toString());
-  const [categoryId, setCategoryId] = useState(rawRecord.categoryId);
-  const [note, setNote] = useState(rawRecord.note);
+  const [type, setType] = useState<TRecordType>(record.type);
+  const [amount, setAmount] = useState(record.amount);
+  const [amountString, setAmountString] = useState(record.amount.toString());
+  const [categoryId, setCategoryId] = useState(record.categoryId);
+  const [note, setNote] = useState(record.note);
 
   const categories = type === 'expense' ? DEFAULT_EXPENSE_CATEGORIES : DEFAULT_INCOME_CATEGORIES;
 
@@ -126,15 +120,15 @@ const Money: React.FC<Props> = (props) => {
   const onOK = () => {
     if (amount === 0) return alert('Amount cannot be 0');
 
-    const newRawRecord = {
-      ...rawRecord,
+    const newRecord = {
+      ...record,
       amount,
       categoryId,
       note,
       type
     };
 
-    onSubmit(newRawRecord);
+    onSubmit(newRecord);
 
     closeDrawer();
   };
@@ -182,4 +176,4 @@ const Money: React.FC<Props> = (props) => {
   );
 };
 
-export default Money;
+export {Money};

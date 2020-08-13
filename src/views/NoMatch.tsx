@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 function NoMatch() {
   return (
@@ -6,4 +6,4 @@ function NoMatch() {
   );
 }
 
-export default NoMatch;
+export {NoMatch};

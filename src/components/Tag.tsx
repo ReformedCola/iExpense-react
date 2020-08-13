@@ -20,4 +20,4 @@ const Tag: React.FC = (props) => {
   );
 };
 
-export default Tag;
+export {Tag};

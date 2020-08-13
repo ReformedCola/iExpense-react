@@ -15,4 +15,4 @@ const theme = {
   $smallTextSize: '12px',
 };
 
-export default theme;
+export {theme};

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import theme from 'theme';
 import styled from 'styled-components';
+import {theme} from 'theme';
 
-type Props = {
+type TProps = {
   value: number
   height?: number
   width?: number
@@ -48,7 +48,7 @@ const Progress = styled.div<TProgress>`
   background: ${props => props.color};
 `;
 
-const ProgressBar: React.FC<Props> = (props) => {
+const ProgressBar: React.FC<TProps> = (props) => {
   const {value, width, height, color} = props;
 
   return (
@@ -68,4 +68,4 @@ ProgressBar.defaultProps = {
   height: 8
 };
 
-export default ProgressBar;
+export {ProgressBar};

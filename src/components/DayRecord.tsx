@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Tag from './Tag';
-import EachRecord from './EachRecord';
+import {Tag} from './Tag';
+import {EachRecord} from './EachRecord';
 import {TDayRecord} from 'hooks/useRecords';
 
-type Props = {
+type TProps = {
   dayRecord: TDayRecord
 }
 
@@ -41,7 +41,7 @@ const AmountSection = styled.section`
   }
 `;
 
-const DayRecord: React.FC<Props> = (props) => {
+const DayRecord: React.FC<TProps> = (props) => {
   const {day, exactDay, expenseTotal, incomeTotal, recordList} = props.dayRecord;
 
   return (
@@ -74,4 +74,4 @@ const DayRecord: React.FC<Props> = (props) => {
   );
 };
 
-export default DayRecord;
+export {DayRecord};

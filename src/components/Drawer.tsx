@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import Icon from './Icon';
+import {Icon} from './Icon';
 
-type Props = {
+type TProps = {
   closeDrawer: () => void
   title?: string
 }
@@ -36,7 +36,7 @@ const Main = styled.div`
   overflow: hidden;
 `;
 
-const Drawer: React.FC<Props> = (props) => {
+const Drawer: React.FC<TProps> = (props) => {
   const {title, closeDrawer} = props;
 
   return (
@@ -58,4 +58,4 @@ Drawer.defaultProps = {
   title: ''
 };
 
-export default Drawer;
+export {Drawer};

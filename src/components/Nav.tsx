@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import {Link, useLocation} from 'react-router-dom';
 import * as React from 'react';
-import Icon from './Icon';
-import theme from 'theme';
+import {Link, useLocation} from 'react-router-dom';
+import styled from 'styled-components';
+import {Icon} from './Icon';
+import {theme} from 'theme';
 
 type TNavItem = {
   selected: boolean
@@ -13,12 +13,6 @@ const NavWrapper = styled.nav`
   background: white;
   box-shadow: 0px -2px 12px 0px rgba(192, 196, 204, 0.4);
   z-index: 2;
-  a {
-    text-decoration: none;
-  }
-  .selected {
-    color: ${props => props.theme.$success}
-  }
 `;
 
 const NavItem = styled(Link)<TNavItem>`
@@ -53,7 +47,7 @@ const Nav: React.FC = () => {
             <Icon name="statistics" size={24} color={theme.$success}/> :
             <Icon name="statistics" size={24}/>
         }
-        <div>Chart</div>
+        <div>Statistics</div>
       </NavItem>
       <NavItem to="/settings" selected={pathname === 'settings'}>
         {
@@ -67,5 +61,5 @@ const Nav: React.FC = () => {
   );
 };
 
-export default Nav;
+export {Nav};
 
