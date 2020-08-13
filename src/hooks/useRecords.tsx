@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import dayjs, {Dayjs} from 'dayjs';
-import {DAY, MONTH} from 'lib/date';
+import {DAY, EXACT_DAY, MONTH} from 'lib/date';
 import {ALL_TYPE} from 'lib/category';
 
 export type RecordType = 'expense' | 'income'
@@ -134,7 +134,7 @@ const useRecords = () => {
   const fetchData = () => {
     const rawString = window.localStorage.getItem(ITEM_NAME);
 
-    const rawRecordList = !rawString ? DEFAULT_RECORDS : JSON.parse(rawString);
+    const rawRecordList = rawString ? JSON.parse(rawString) : DEFAULT_RECORDS;
 
     setRawRecordList(rawRecordList);
     setRecordList(bulkAppendRecords([], rawRecordList));
@@ -212,6 +212,7 @@ const useRecords = () => {
     filterRecordList,
     deleteRecord,
     editRecord
+
   };
 
 };
