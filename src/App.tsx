@@ -14,7 +14,7 @@ type TAppWrapper = {
 
 const AppWrapper = styled.div<TAppWrapper>`
   position: relative;
-  max-width: 480px;
+  max-width: 560px;
   margin: 0 auto;
   background: #EDEDED;
   height: ${props => props.height + 'px'};
@@ -30,7 +30,7 @@ const App: React.FC = () => {
   useEffect(() => {
     window.addEventListener('resize', onResize);
     return window.removeEventListener('resize', onResize);
-  });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
