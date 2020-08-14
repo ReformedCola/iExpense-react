@@ -33,6 +33,46 @@ export type TMonthRecord = TFilteredRecord & {
 export const DEFAULT_RECORDS: TRecord[] = [
   {
     id: '1',
+    date: dayjs().toISOString(),
+    categoryId: '0',
+    amount: 999,
+    note: 'Welcome to iExpense, feel free to record your living expense',
+    type: 'income'
+  },
+  {
+    id: '2',
+    date: dayjs('2020-08-13 21:00').toISOString(),
+    categoryId: '6',
+    amount: 1000,
+    note: 'Tesla',
+    type: 'income'
+  },
+  {
+    id: '3',
+    date: dayjs('2020-08-13 20:00').toISOString(),
+    categoryId: '1',
+    amount: 500,
+    note: 'Nike',
+    type: 'expense'
+  },
+  {
+    id: '4',
+    date: dayjs('2020-08-13 17:00').toISOString(),
+    categoryId: '9',
+    amount: 5000,
+    note: '',
+    type: 'income'
+  },
+  {
+    id: '5',
+    date: dayjs('2020-08-13 16:55').toISOString(),
+    categoryId: '3',
+    amount: 20,
+    note: '',
+    type: 'expense'
+  },
+  {
+    id: '6',
     date: dayjs('2020-08-05 20:00').toISOString(),
     categoryId: '1',
     amount: 300,
@@ -40,7 +80,7 @@ export const DEFAULT_RECORDS: TRecord[] = [
     type: 'expense'
   },
   {
-    id: '2',
+    id: '7',
     date: dayjs('2020-06-04 20:00').toISOString(),
     categoryId: '4',
     amount: 300,
@@ -48,7 +88,7 @@ export const DEFAULT_RECORDS: TRecord[] = [
     type: 'expense'
   },
   {
-    id: '3',
+    id: '8',
     date: dayjs('2020-05-03 12:00').toISOString(),
     categoryId: '9',
     amount: 400,
@@ -56,7 +96,7 @@ export const DEFAULT_RECORDS: TRecord[] = [
     type: 'income'
   },
   {
-    id: '4',
+    id: '9',
     date: dayjs('2020-04-02 15:00').toISOString(),
     categoryId: '1',
     amount: 200,
@@ -64,7 +104,7 @@ export const DEFAULT_RECORDS: TRecord[] = [
     type: 'expense'
   },
   {
-    id: '5',
+    id: '10',
     date: dayjs('2020-03-01 8:00').toISOString(),
     categoryId: '5',
     amount: 500,
