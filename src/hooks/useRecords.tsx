@@ -33,31 +33,39 @@ export type TMonthRecord = TFilteredRecord & {
 export const DEFAULT_RECORDS: TRecord[] = [
   {
     id: '1',
-    date: dayjs('2020-06-01 20:00').toISOString(),
+    date: dayjs('2020-08-05 20:00').toISOString(),
+    categoryId: '1',
+    amount: 300,
+    note: 'Adidas',
+    type: 'expense'
+  },
+  {
+    id: '2',
+    date: dayjs('2020-06-04 20:00').toISOString(),
     categoryId: '4',
     amount: 300,
     note: 'Dinner',
     type: 'expense'
   },
   {
-    id: '2',
-    date: dayjs('2020-05-02 12:00').toISOString(),
+    id: '3',
+    date: dayjs('2020-05-03 12:00').toISOString(),
     categoryId: '9',
     amount: 400,
     note: 'Wage',
     type: 'income'
   },
   {
-    id: '3',
-    date: dayjs('2020-04-03 15:00').toISOString(),
+    id: '4',
+    date: dayjs('2020-04-02 15:00').toISOString(),
     categoryId: '1',
     amount: 200,
     note: 'Shopping',
     type: 'expense'
   },
   {
-    id: '4',
-    date: dayjs('2020-03-04 8:00').toISOString(),
+    id: '5',
+    date: dayjs('2020-03-01 8:00').toISOString(),
     categoryId: '5',
     amount: 500,
     note: 'Korea',

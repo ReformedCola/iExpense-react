@@ -26,10 +26,13 @@ const Main = styled.div`
   margin: 0 -24px;
 `;
 
-const getYData = (days: number[], rawRecordList: TRecord[]) => {
+const getYData = (days: number[], recordList: TRecord[]) => {
   return days.map(d => {
-    const record = rawRecordList.find(r => dayjs(r.date).get('date') === d);
-    return record ? record.amount : 0.00;
+    let total = 0;
+    recordList.filter(record => dayjs(record.date).get('date') === d).forEach(r => {
+      total = r ? total += r.amount : 0.00;
+    });
+    return total;
   });
 };
 
@@ -38,11 +41,11 @@ const DayAnalysis: React.FC<TProps> = (props) => {
 
   const [type, setType] = useState<TRecordType>('expense');
 
-  const rawRecordList = monthRecord ? parseMonthRecord(monthRecord).filter(r => r.type === type) : [];
+  const recordList = monthRecord ? parseMonthRecord(monthRecord).filter(r => r.type === type) : [];
 
   // compare by days
   const xDayData = getDaysInMonth(month);
-  const yDayData = getYData(xDayData, rawRecordList);
+  const yDayData = getYData(xDayData, recordList);
   const dayChartOptions = barChart(xDayData, yDayData, type);
 
   return (

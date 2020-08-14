@@ -12,5 +12,5 @@ export const getDaysInMonth = (now: Dayjs) => {
 
   const days = new Date(year, month + 1, 0).getDate();
 
-  return [...Array(days)].map((_, i) => i + 1);
+  return [...Array(days)].map((_, i) => i + 1).sort((a, b) => b - a);
 };
